@@ -13,6 +13,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 import CourseListScreen from './src/screens/CourseListScreen';
+import CourseDetailScreen from './src/screens/CourseDetailScreen';
 import SigninScreen from './src/screens/SigninScreen';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
@@ -27,6 +28,7 @@ const loginFlow = createStackNavigator({
 
 const courseListFlow = createStackNavigator({
   CourseList: CourseListScreen,
+  CourseDetail: CourseDetailScreen,
 });
 
 courseListFlow.navigationOptions = {
