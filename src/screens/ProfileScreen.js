@@ -6,13 +6,12 @@ import {ProfileScreenStyles as styles} from '../styles/Profile';
 import courseApi from '../api/course';
 
 const ProfileScreen = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
   const {state: authState, signout} = useContext(AuthContext);
   const {state: courseState} = useContext(CourseContext);
 
   useEffect(() => {
-    setLoading(true);
     courseApi
       .get('/usertest/' + authState.pk + '/')
       .then((response) => {
@@ -24,6 +23,16 @@ const ProfileScreen = () => {
         console.log('error while fetching user settings', error),
       );
   },[]);
+
+  const fetchCourseNames = (ids) => {
+    const courses = [];
+    courseState.forEach((course) => {
+      if (ids.includes(course.id)) {
+        courses.push(course.name);
+      }
+    });
+    return courses;
+  };
 
   const myProfile = () => {
     return (
@@ -52,7 +61,9 @@ const ProfileScreen = () => {
           </View>
           <View style={styles.row}>
             <Text style={styles.settingHeader}>Courses:</Text>
-            <Text style={styles.settingValue}>{user.courses}</Text>
+            <Text style={styles.settingValue}>
+              {fetchCourseNames(user.courses)}
+            </Text>
           </View>
         </View>
       </View>
