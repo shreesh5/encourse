@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
 import {NavigationEvents} from 'react-navigation';
 import {Context as AuthContext} from '../context/AuthContext';
-import {SigninScreenStyles as styles} from '../styles/LoginScreen';
+import {SigninScreenStyles as styles} from '../styles/Signin';
 
 const SigninScreen = () => {
   const [username, setUsername] = useState('');

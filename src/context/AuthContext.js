@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import createDataContext from './createDataContext';
 import courseApi from '../api/course';
+import {navigate} from '../navigationRef';
 
 const authReducer = (state, action) => {
   switch (action.type) {
@@ -28,6 +29,9 @@ const tryLocalSignin = (dispatch) => async () => {
   const pk = await AsyncStorage.getItem('pk');
   if (token && role && pk) {
     dispatch({type: 'signin', payload: {token, role, pk}});
+    navigate('Home');
+  } else {
+    navigate('Signin');
   }
 };
 
@@ -55,6 +59,7 @@ const signin = (dispatch) => {
         type: 'signin',
         payload: {token: response.data.token, role: response.data.user_role},
       });
+      navigate('Home');
     } catch (error) {
       console.log('error in try catch', error);
       dispatch({
@@ -71,6 +76,7 @@ const signout = (dispatch) => {
     await AsyncStorage.removeItem('role');
     await AsyncStorage.removeItem('pk');
     dispatch({type: 'signout'});
+    navigate('loginFlow');
   };
 };
 
