@@ -21,6 +21,7 @@ import ProfileScreen from './src/screens/ProfileScreen';
 import {Provider as AuthProvider} from './src/context/AuthContext';
 import {Provider as CourseProvider} from './src/context/CourseContext';
 import {setNavigator} from './src/navigationRef';
+import {GlobalColors} from './src/styles/Global';
 
 const loginFlow = createStackNavigator({
   Signin: SigninScreen,
@@ -35,21 +36,32 @@ courseListFlow.navigationOptions = {
   title: 'Courses',
 };
 
-const profileFlow = createStackNavigator({
-  Profile: ProfileScreen,
+const settingsFlow = createStackNavigator({
+  Settings: ProfileScreen,
 });
 
-profileFlow.navigationOptions = {
-  title: 'Profile',
+settingsFlow.navigationOptions = {
+  title: 'Settings',
 };
+
+const mainFlow = createBottomTabNavigator(
+  {
+    courseListFlow,
+    settingsFlow,
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: GlobalColors.purple,
+      inactiveTintColor: GlobalColors.grey,
+      labelStyle: {fontSize: 15},
+    },
+  },
+);
 
 const switchNavigator = createSwitchNavigator({
   ResolveAuth: ResolveAuthScreen,
   loginFlow,
-  mainFlow: createBottomTabNavigator({
-    courseListFlow,
-    profileFlow,
-  }),
+  mainFlow,
 });
 
 const App = createAppContainer(switchNavigator);
