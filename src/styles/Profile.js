@@ -40,15 +40,16 @@ export const ProfileScreenStyles = StyleSheet.create({
   buttonView: {
     flexDirection: 'row',
     width: '100%',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     marginTop: 25,
   },
   buttonContainer: {
     padding: 20,
     backgroundColor: GlobalColors.purple,
-    borderRadius: 7,
+    borderRadius: 10,
   },
   buttonText: {
     color: GlobalColors.white,
+    fontSize: 16,
   },
 });

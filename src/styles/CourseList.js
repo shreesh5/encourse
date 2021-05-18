@@ -21,7 +21,7 @@ export const CourseListScreenStyles = StyleSheet.create({
     borderColor: GlobalColors.purple,
     padding: 20,
     margin: 10,
-    borderRadius: 5,
+    borderRadius: 15,
     flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: GlobalColors.purple,
