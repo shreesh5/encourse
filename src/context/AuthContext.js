@@ -29,7 +29,7 @@ const tryLocalSignin = (dispatch) => async () => {
   const pk = await AsyncStorage.getItem('pk');
   if (token && role && pk) {
     dispatch({type: 'signin', payload: {token, role, pk}});
-    navigate('Home');
+    navigate('CourseList');
   } else {
     navigate('Signin');
   }
@@ -54,12 +54,12 @@ const signin = (dispatch) => {
       console.log('response', response);
       await AsyncStorage.setItem('token', response.data.token);
       await AsyncStorage.setItem('role', response.data.user_role);
-      await AsyncStorage.setItem('pk', response.data.id);
+      await AsyncStorage.setItem('pk', JSON.stringify(response.data.user_id));
       dispatch({
         type: 'signin',
         payload: {token: response.data.token, role: response.data.user_role},
       });
-      navigate('Home');
+      navigate('CourseList');
     } catch (error) {
       console.log('error in try catch', error);
       dispatch({

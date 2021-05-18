@@ -12,7 +12,7 @@ import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 
-import HomeScreen from './src/screens/HomeScreen';
+import CourseListScreen from './src/screens/CourseListScreen';
 import SigninScreen from './src/screens/SigninScreen';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
@@ -25,12 +25,12 @@ const loginFlow = createStackNavigator({
   Signin: SigninScreen,
 });
 
-const homeFlow = createStackNavigator({
-  Home: HomeScreen,
+const courseListFlow = createStackNavigator({
+  CourseList: CourseListScreen,
 });
 
-homeFlow.navigationOptions = {
-  title: 'Home',
+courseListFlow.navigationOptions = {
+  title: 'Courses',
 };
 
 const profileFlow = createStackNavigator({
@@ -45,7 +45,7 @@ const switchNavigator = createSwitchNavigator({
   ResolveAuth: ResolveAuthScreen,
   loginFlow,
   mainFlow: createBottomTabNavigator({
-    homeFlow,
+    courseListFlow,
     profileFlow,
   }),
 });

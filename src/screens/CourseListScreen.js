@@ -2,12 +2,12 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {HomeScreenStyles as styles} from '../styles/Home';
 
-const HomeScreen = () => {
+const CourseListScreen = () => {
   return (
     <View style={styles.contentView}>
-      <Text>HomeScreen</Text>
+      <Text>Course List Screen</Text>
     </View>
   );
 };
 
-export default HomeScreen;
+export default CourseListScreen;
