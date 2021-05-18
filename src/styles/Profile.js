@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import {GlobalColors} from './Global';
 
 export const ProfileScreenStyles = StyleSheet.create({
   contentView: {
@@ -9,9 +8,6 @@ export const ProfileScreenStyles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     width: '100%',
-    height: '8.5%',
-    borderColor: GlobalColors.black,
-    borderWidth: 1,
   },
   settingHeader: {
     width: '50%',
