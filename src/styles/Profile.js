@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {GlobalColors} from './Global';
 
 export const ProfileScreenStyles = StyleSheet.create({
   contentView: {
@@ -8,6 +9,9 @@ export const ProfileScreenStyles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     width: '100%',
+    height: '8.5%',
+    borderColor: GlobalColors.black,
+    borderWidth: 1,
   },
   settingHeader: {
     width: '50%',
@@ -17,7 +21,11 @@ export const ProfileScreenStyles = StyleSheet.create({
     width: '50%',
     textAlign: 'right',
   },
+  profileSettingsView: {
+    height: '50%',
+  },
   adminSettingsView: {
-    marginTop: 25,
+    // marginTop: 10,
+    height: '50%',
   },
 });

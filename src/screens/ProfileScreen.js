@@ -37,34 +37,32 @@ const ProfileScreen = () => {
   const myProfile = () => {
     return (
       <View>
-        <View>
-          <Text>My Profile</Text>
-          <View style={styles.row}>
-            <Text style={styles.settingHeader}>Username:</Text>
-            <Text style={styles.settingValue}>{user.username}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.settingHeader}>Email:</Text>
-            <Text style={styles.settingValue}>{user.email}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.settingHeader}>School:</Text>
-            <Text style={styles.settingValue}>{user.school}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.settingHeader}>City:</Text>
-            <Text style={styles.settingValue}>{user.city}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.settingHeader}>Country:</Text>
-            <Text style={styles.settingValue}>{user.country}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.settingHeader}>Courses:</Text>
-            <Text style={styles.settingValue}>
-              {fetchCourseNames(user.courses)}
-            </Text>
-          </View>
+        <Text>My Profile</Text>
+        <View style={styles.row}>
+          <Text style={styles.settingHeader}>Username:</Text>
+          <Text style={styles.settingValue}>{user.username}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.settingHeader}>Email:</Text>
+          <Text style={styles.settingValue}>{user.email}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.settingHeader}>School:</Text>
+          <Text style={styles.settingValue}>{user.school}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.settingHeader}>City:</Text>
+          <Text style={styles.settingValue}>{user.city}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.settingHeader}>Country:</Text>
+          <Text style={styles.settingValue}>{user.country}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.settingHeader}>Courses:</Text>
+          <Text style={styles.settingValue}>
+            {fetchCourseNames(user.courses)}
+          </Text>
         </View>
       </View>
     );
