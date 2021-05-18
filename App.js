@@ -18,6 +18,7 @@ import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 
 import {Provider as AuthProvider} from './src/context/AuthContext';
+import {Provider as CourseProvider} from './src/context/CourseContext';
 import {setNavigator} from './src/navigationRef';
 
 const loginFlow = createStackNavigator({
@@ -54,11 +55,13 @@ export default () => {
   return (
     <>
       <AuthProvider>
-        <App
-          ref={(navigator) => {
-            setNavigator(navigator);
-          }}
-        />
+        <CourseProvider>
+          <App
+            ref={(navigator) => {
+              setNavigator(navigator);
+            }}
+          />
+        </CourseProvider>
       </AuthProvider>
     </>
   );
