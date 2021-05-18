@@ -11,16 +11,23 @@ export const CourseListScreenStyles = StyleSheet.create({
   courseListContainer: {
     alignItems: 'center',
     flexGrow: 1,
-    borderWidth: 3,
-    borderColor: GlobalColors.black,
+    marginTop: 15,
+    // borderWidth: 3,
+    // borderColor: GlobalColors.black,
   },
   courseCard: {
-    width: width * 0.9,
+    width: width * 0.7,
     borderWidth: 1,
-    borderColor: GlobalColors.black,
-    padding: 10,
+    borderColor: GlobalColors.purple,
+    padding: 20,
     margin: 10,
     borderRadius: 5,
     flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: GlobalColors.purple,
+  },
+  courseText: {
+    color: GlobalColors.white,
+    fontSize: 23,
   },
 });

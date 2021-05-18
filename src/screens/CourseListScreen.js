@@ -17,11 +17,7 @@ const CourseListScreen = ({navigation}) => {
         }}
       >
         <View style={styles.courseCard}>
-          <Text>{item.name}</Text>
-          <Text>
-            Duration:
-            {item.duration}
-          </Text>
+          <Text style={styles.courseText}>{item.name}</Text>
         </View>
       </TouchableOpacity>
     );
