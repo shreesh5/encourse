@@ -4,8 +4,9 @@ import {GlobalColors} from './Global';
 export const SigninScreenStyles = StyleSheet.create({
   contentView: {
     flex: 1,
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 200,
   },
   inputView: {
     flexDirection: 'row',
