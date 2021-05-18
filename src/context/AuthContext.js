@@ -12,7 +12,7 @@ const authReducer = (state, action) => {
         errorMessage: '',
         token: action.payload.token,
         role: action.payload.role,
-        pk: action.payload.id,
+        pk: action.payload.pk,
       };
     case 'clear_error_message':
       return {...state, errorMessage: ''};
@@ -51,13 +51,17 @@ const signin = (dispatch) => {
         username,
         password,
       });
-      console.log('response', response);
+      console.log('response', response.data);
       await AsyncStorage.setItem('token', response.data.token);
       await AsyncStorage.setItem('role', response.data.user_role);
-      await AsyncStorage.setItem('pk', JSON.stringify(response.data.user_id));
+      await AsyncStorage.setItem('pk', response.data.user_id);
       dispatch({
         type: 'signin',
-        payload: {token: response.data.token, role: response.data.user_role},
+        payload: {
+          token: response.data.token,
+          role: response.data.user_role,
+          pk: response.data.user_id,
+        },
       });
       navigate('CourseList');
     } catch (error) {
