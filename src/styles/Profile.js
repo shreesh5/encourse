@@ -38,15 +38,18 @@ export const ProfileScreenStyles = StyleSheet.create({
     color: GlobalColors.purple,
   },
   buttonView: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     width: '100%',
-    justifyContent: 'space-evenly',
     marginTop: 25,
   },
   buttonContainer: {
+    width: '75%',
+    alignSelf: 'center',
+    alignItems: 'center',
     padding: 20,
+    margin: 3,
     backgroundColor: GlobalColors.purple,
-    borderRadius: 10,
+    borderRadius: 15,
   },
   buttonText: {
     color: GlobalColors.white,

@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react';
-import {View, Text, ActivityIndicator, TouchableOpacity} from 'react-native';
+import {View, Text, ActivityIndicator, TouchableOpacity, ScrollView} from 'react-native';
 import {Context as AuthContext} from '../context/AuthContext';
 import {Context as CourseContext} from '../context/CourseContext';
 import {ProfileScreenStyles as styles} from '../styles/Profile';
@@ -102,21 +102,23 @@ const ProfileScreen = () => {
 
   return (
     <View style={styles.contentView}>
-      {loading ? <ActivityIndicator /> : settings()}
-      <View style={styles.buttonView}>
-        <TouchableOpacity
-          onPress={() => console.log('Edit Profile button pressed')}
-        >
-          <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>Edit Profile</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => signout()}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>Signout</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
+      <ScrollView>
+        {loading ? <ActivityIndicator /> : settings()}
+        <View style={styles.buttonView}>
+          <TouchableOpacity
+            onPress={() => console.log('Edit Profile button pressed')}
+          >
+            <View style={styles.buttonContainer}>
+              <Text style={styles.buttonText}>Edit Profile</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => signout()}>
+            <View style={styles.buttonContainer}>
+              <Text style={styles.buttonText}>Signout</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </View>
   );
 };
