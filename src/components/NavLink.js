@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {TouchableOpacity, Text} from 'react-native';
 import {withNavigation} from 'react-navigation';
 import Spacer from './Spacer';
-import {GlobalColors} from '../styles/Global';
+import {NavLinkStyles as styles} from '../styles/NavLink';
 
 const NavLink = ({navigation, text, routeName}) => {
   return (
@@ -13,12 +13,5 @@ const NavLink = ({navigation, text, routeName}) => {
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  link: {
-    color: GlobalColors.purple,
-    alignSelf: 'center',
-  },
-});
 
 export default withNavigation(NavLink);
