@@ -40,14 +40,16 @@ const clearErrorMessage = (dispatch) => () => {
 };
 
 const signup = (dispatch) => {
-  return async ({username, password}) => {
+  return async ({username, email, password}) => {
     // make api request to sign up with that username and password
     // if we sign up, modify our state, and say that we are authenticated
     // if signing up fails, we probably need to reflect an error message somewhere
     try {
       const response = await courseApi.post('/auth/register/', {
         username,
+        email,
         password,
+        is_student: true,
       });
       await AsyncStorage.setItem('token', response.data.token);
       await AsyncStorage.setItem('role', response.data.user_role);

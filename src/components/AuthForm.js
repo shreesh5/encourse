@@ -3,8 +3,15 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import Spacer from './Spacer';
 import {AuthFormStyles as styles} from '../styles/AuthForm';
 
-const AuthForm = ({headerText, errorMessage, onSubmit, submitButtonText}) => {
+const AuthForm = ({
+  headerText,
+  errorMessage,
+  onSubmit,
+  submitButtonText,
+  type,
+}) => {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
@@ -22,6 +29,21 @@ const AuthForm = ({headerText, errorMessage, onSubmit, submitButtonText}) => {
           style={styles.inputContainer}
         />
       </View>
+      {type === 'register' && (
+        <>
+          <Spacer />
+          <View style={styles.labelInputContainer}>
+            <Text style={styles.inputLabel}>Email</Text>
+            <TextInput
+              value={email}
+              onChangeText={setEmail}
+              autoCapitalize="none"
+              autoCorrect={false}
+              style={styles.inputContainer}
+            />
+          </View>
+        </>
+      )}
       <Spacer />
       <View style={styles.labelInputContainer}>
         <Text style={styles.inputLabel}>Password</Text>
@@ -36,7 +58,7 @@ const AuthForm = ({headerText, errorMessage, onSubmit, submitButtonText}) => {
       </View>
       {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
       <Spacer>
-        <TouchableOpacity onPress={() => onSubmit({username, password})}>
+        <TouchableOpacity onPress={() => onSubmit({username, email, password})}>
           <View style={styles.submitButtonContainer}>
             <Text style={styles.submitButtonText}>{submitButtonText}</Text>
           </View>
