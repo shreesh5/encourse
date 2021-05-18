@@ -15,6 +15,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import CourseListScreen from './src/screens/CourseListScreen';
 import CourseDetailScreen from './src/screens/CourseDetailScreen';
 import SigninScreen from './src/screens/SigninScreen';
+import SignupScreen from './src/screens/SignupScreen';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 
@@ -25,6 +26,7 @@ import {GlobalColors} from './src/styles/Global';
 
 const loginFlow = createStackNavigator({
   Signin: SigninScreen,
+  Signup: SignupScreen,
 });
 
 const courseListFlow = createStackNavigator({

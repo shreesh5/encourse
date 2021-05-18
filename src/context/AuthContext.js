@@ -39,19 +39,47 @@ const clearErrorMessage = (dispatch) => () => {
   dispatch({type: 'clear_error_message'});
 };
 
+const signup = (dispatch) => {
+  return async ({username, password}) => {
+    // make api request to sign up with that username and password
+    // if we sign up, modify our state, and say that we are authenticated
+    // if signing up fails, we probably need to reflect an error message somewhere
+    try {
+      const response = await courseApi.post('/auth/register/', {
+        username,
+        password,
+      });
+      await AsyncStorage.setItem('token', response.data.token);
+      await AsyncStorage.setItem('role', response.data.user_role);
+      await AsyncStorage.setItem('pk', `${response.data.id}`);
+      dispatch({
+        type: 'signin',
+        payload: {
+          token: response.data.token,
+          role: response.data.user_role,
+          pk: `${response.data.id}`,
+        },
+      });
+      navigate('CourseList');
+    } catch (error) {
+      dispatch({
+        type: 'add_error',
+        payload: 'Something went wrong with sign up',
+      });
+    }
+  };
+};
+
 const signin = (dispatch) => {
   return async ({username, password}) => {
     // try to signin
     // handle success by updating state
     // handle failure by showing error message
     try {
-      console.log('username', username);
-      console.log('password', password);
       const response = await courseApi.post('/auth/login/', {
         username,
         password,
       });
-      console.log('response', response.data);
       await AsyncStorage.setItem('token', response.data.token);
       await AsyncStorage.setItem('role', response.data.user_role);
       await AsyncStorage.setItem('pk', response.data.user_id);
@@ -65,7 +93,6 @@ const signin = (dispatch) => {
       });
       navigate('CourseList');
     } catch (error) {
-      console.log('error in try catch', error);
       dispatch({
         type: 'add_error',
         payload: 'Something went wrong with signin',
@@ -90,6 +117,7 @@ export const {Context, Provider} = createDataContext(
     tryLocalSignin,
     clearErrorMessage,
     signin,
+    signup,
     signout,
   },
   {token: null, errorMessage: '', role: '', pk: null},

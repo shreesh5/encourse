@@ -10,7 +10,7 @@ import Spacer from './Spacer';
 import {GlobalColors} from '../styles/Global';
 
 const AuthForm = ({headerText, errorMessage, onSubmit, submitButtonText}) => {
-  const [username, setusername] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   return (
@@ -22,7 +22,7 @@ const AuthForm = ({headerText, errorMessage, onSubmit, submitButtonText}) => {
         <Text style={styles.inputLabel}>Username</Text>
         <TextInput
           value={username}
-          onChangeText={setusername}
+          onChangeText={setUsername}
           autoCapitalize="none"
           autoCorrect={false}
           style={styles.inputContainer}
