@@ -70,14 +70,14 @@ const CourseDetailScreen = ({navigation}) => {
         <View style={styles.buttonContainer}>
           {!course.users.includes(parseInt(authState.pk)) ? (
             <Button
-              label="Enroll"
+              label="Add"
               onPress={() => enrollInCourse(authState.pk, course.id)}
               labelStyle={styles.buttonText}
               containerStyle={styles.enrollButton}
             />
           ) : (
             <Button
-              label="Un-enroll"
+              label="Drop"
               onPress={() => unEnrollInCourse(authState.pk, course.id)}
               labelStyle={styles.buttonText}
               containerStyle={styles.enrollButton}
