@@ -1,9 +1,10 @@
-import React, {useContext, useEffect} from 'react';
-import {View, Text, FlatList, TouchableOpacity} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import {View, Text, FlatList, TouchableOpacity, ActivityIndicator} from 'react-native';
 import {CourseListScreenStyles as styles} from '../styles/CourseList';
 import {Context as CourseContext} from '../context/CourseContext';
 
 const CourseListScreen = ({navigation}) => {
+  const [loading, setLoading] = useState(false);
   const {state, fetchCourses} = useContext(CourseContext);
 
   useEffect(() => {
@@ -28,12 +29,22 @@ const CourseListScreen = ({navigation}) => {
 
   return (
     <View style={styles.contentView}>
-      <FlatList
-        renderItem={renderItem}
-        data={state}
-        contentContainerStyle={styles.courseListContainer}
-        keyExtractor={(item) => item.name}
-      />
+      {loading ? (
+        <ActivityIndicator />
+      ) : (
+        <FlatList
+          renderItem={renderItem}
+          data={state}
+          contentContainerStyle={styles.courseListContainer}
+          keyExtractor={(item) => item.name}
+          refreshing={loading}
+          onRefresh={() => {
+            setLoading(true);
+            fetchCourses();
+            setLoading(false);
+          }}
+        />
+      )}
     </View>
   );
 };
