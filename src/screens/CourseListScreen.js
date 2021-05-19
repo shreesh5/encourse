@@ -1,11 +1,14 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
-import {NavigationEvents} from 'react-navigation';
 import {CourseListScreenStyles as styles} from '../styles/CourseList';
 import {Context as CourseContext} from '../context/CourseContext';
 
 const CourseListScreen = ({navigation}) => {
   const {state, fetchCourses} = useContext(CourseContext);
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
 
   const renderItem = ({item}) => {
     return (
@@ -25,7 +28,6 @@ const CourseListScreen = ({navigation}) => {
 
   return (
     <View style={styles.contentView}>
-      <NavigationEvents onWillFocus={fetchCourses} />
       <FlatList
         renderItem={renderItem}
         data={state}

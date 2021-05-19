@@ -1,10 +1,13 @@
 import createDataContext from './createDataContext';
 import courseApi from '../api/course';
+import {navigate} from '../navigationRef';
 
 const courseReducer = (state, action) => {
   switch (action.type) {
     case 'fetch_courses':
       return action.payload;
+    case 'delete_course':
+      return state.filter((course) => course.id !== action.payload);
     default:
       return state;
   }
@@ -32,8 +35,21 @@ const createCourse = () => {
   };
 };
 
+const deleteCourse = (dispatch) => {
+  return async (courseId) => {
+    try {
+      const response = await courseApi.delete(`/coursetest/${courseId}/`);
+      console.log('response', response);
+      dispatch({type: 'delete_course', payload: courseId});
+      navigate('CourseList');
+    } catch (error) {
+      console.log('error in delete user response', error);
+    }
+  };
+};
+
 export const {Context, Provider} = createDataContext(
   courseReducer,
-  {fetchCourses, createCourse},
+  {fetchCourses, createCourse, deleteCourse},
   [],
 );
