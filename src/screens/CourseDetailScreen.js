@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text} from 'react-native';
 import {Context as AuthContext} from '../context/AuthContext';
 import {Context as CourseContext} from '../context/CourseContext';
 import {CourseDetailStyles as styles} from '../styles/CourseDetail';
 import courseApi from '../api/course';
+import Button from '../components/Button';
 
 const CourseDetailScreen = ({navigation}) => {
   const {state: courseState} = useContext(CourseContext);
@@ -50,30 +51,51 @@ const CourseDetailScreen = ({navigation}) => {
 
   return (
     <View style={styles.contentView}>
-      <Text>{course.name}</Text>
-      <Text>{course.duration}</Text>
-      <Text>{course.description}</Text>
-      <Text>
-        Capacity: {course.capacity - course.users.length} / {course.capacity}
-      </Text>
-      <Text>{course.users}</Text>
+      <Text style={styles.courseName}>{course.name}</Text>
+      <View style={styles.courseDurationContainer}>
+        <Text style={styles.label}>Duration:</Text>
+        <Text style={styles.text}>{course.duration}</Text>
+      </View>
+      <View style={styles.courseDescriptionContainer}>
+        <Text style={styles.label}>Description:</Text>
+        <Text style={styles.text}>{course.description}</Text>
+      </View>
+      <View style={styles.courseDurationContainer}>
+        <Text style={styles.label}>Capacity:</Text>
+        <Text style={styles.text}>
+          {course.capacity - course.users.length} / {course.capacity}
+        </Text>
+      </View>
       {authState.role === 'superuser' ? (
+        <View style={styles.buttonContainer}>
+          <Button
+            label="Edit Course"
+            onPress={() => console.log('Edit course button clicked')}
+            labelStyle={styles.buttonText}
+            containerStyle={styles.button}
+          />
+          <Button
+            label="Delete Course"
+            onPress={() => deleteCourse(course.id)}
+            labelStyle={styles.buttonText}
+            containerStyle={styles.button}
+          />
+        </View>
+      ) : null}
+      <View style={styles.buttonContainer}>
         <Button
-          title="Edit Course"
-          onPress={() => console.log('Edit course button clicked')}
+          label="Enroll"
+          onPress={() => enrollInCourse(authState.pk, course.id)}
+          labelStyle={styles.buttonText}
+          containerStyle={styles.button}
         />
-      ) : null}
-      {authState.role === 'superuser' ? (
-        <Button title="Delete Course" onPress={() => deleteCourse(course.id)} />
-      ) : null}
-      <Button
-        title="Enroll"
-        onPress={() => enrollInCourse(authState.pk, course.id)}
-      />
-      <Button
-        title="Un-enroll"
-        onPress={() => unEnrollInCourse(authState.pk, course.id)}
-      />
+        <Button
+          label="Un-enroll"
+          onPress={() => unEnrollInCourse(authState.pk, course.id)}
+          labelStyle={styles.buttonText}
+          containerStyle={styles.button}
+        />
+      </View>
     </View>
   );
 };
