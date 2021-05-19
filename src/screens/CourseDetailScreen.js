@@ -66,35 +66,40 @@ const CourseDetailScreen = ({navigation}) => {
           {course.capacity - course.users.length} / {course.capacity}
         </Text>
       </View>
-      {authState.role === 'superuser' ? (
+      <View style={styles.allButtonContainer}>
         <View style={styles.buttonContainer}>
-          <Button
-            label="Edit Course"
-            onPress={() => console.log('Edit course button clicked')}
-            labelStyle={styles.buttonText}
-            containerStyle={styles.button}
-          />
-          <Button
-            label="Delete Course"
-            onPress={() => deleteCourse(course.id)}
-            labelStyle={styles.buttonText}
-            containerStyle={styles.button}
-          />
+          {!course.users.includes(parseInt(authState.pk)) ? (
+            <Button
+              label="Enroll"
+              onPress={() => enrollInCourse(authState.pk, course.id)}
+              labelStyle={styles.buttonText}
+              containerStyle={styles.enrollButton}
+            />
+          ) : (
+            <Button
+              label="Un-enroll"
+              onPress={() => unEnrollInCourse(authState.pk, course.id)}
+              labelStyle={styles.buttonText}
+              containerStyle={styles.enrollButton}
+            />
+          )}
         </View>
-      ) : null}
-      <View style={styles.buttonContainer}>
-        <Button
-          label="Enroll"
-          onPress={() => enrollInCourse(authState.pk, course.id)}
-          labelStyle={styles.buttonText}
-          containerStyle={styles.button}
-        />
-        <Button
-          label="Un-enroll"
-          onPress={() => unEnrollInCourse(authState.pk, course.id)}
-          labelStyle={styles.buttonText}
-          containerStyle={styles.button}
-        />
+        {authState.role === 'superuser' ? (
+          <View style={styles.buttonContainer}>
+            <Button
+              label="Edit Course"
+              onPress={() => console.log('Edit course button clicked')}
+              labelStyle={styles.buttonText}
+              containerStyle={styles.adminButton}
+            />
+            <Button
+              label="Delete Course"
+              onPress={() => deleteCourse(course.id)}
+              labelStyle={styles.buttonText}
+              containerStyle={styles.adminButton}
+            />
+          </View>
+        ) : null}
       </View>
     </View>
   );

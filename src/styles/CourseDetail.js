@@ -19,6 +19,7 @@ export const CourseDetailStyles = StyleSheet.create({
     alignSelf: 'center',
     width: '75%',
     marginVertical: 15,
+    borderRadius: 10,
   },
   courseDurationContainer: {
     flexDirection: 'row',
@@ -33,13 +34,21 @@ export const CourseDetailStyles = StyleSheet.create({
     // borderColor: GlobalColors.black,
     padding: 5,
   },
-  button: {
+  adminButton: {
     padding: 20,
     backgroundColor: GlobalColors.purple,
     borderRadius: 15,
     alignItems: 'center',
     margin: 1,
     width: width * 0.45,
+  },
+  enrollButton: {
+    padding: 20,
+    backgroundColor: GlobalColors.purple,
+    borderRadius: 15,
+    alignItems: 'center',
+    margin: 1,
+    width: width * 0.91,
   },
   buttonText: {
     fontSize: 20,
@@ -58,5 +67,10 @@ export const CourseDetailStyles = StyleSheet.create({
   text: {
     fontSize: 20,
     // alignSelf: 'flex-',
+  },
+  allButtonContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: 23,
   },
 });
