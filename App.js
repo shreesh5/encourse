@@ -25,6 +25,7 @@ import {Provider as AuthProvider} from './src/context/AuthContext';
 import {Provider as CourseProvider} from './src/context/CourseContext';
 import {setNavigator} from './src/navigationRef';
 import {GlobalColors} from './src/styles/Global';
+import Icon from 'react-native-vector-icons/Feather';
 
 const loginFlow = createStackNavigator({
   Signin: SigninScreen,
@@ -38,6 +39,7 @@ const courseListFlow = createStackNavigator({
 
 courseListFlow.navigationOptions = {
   title: 'Courses',
+  tabBarIcon: <Icon name="book" size={25} />,
 };
 
 const settingsFlow = createStackNavigator({
@@ -48,6 +50,7 @@ const settingsFlow = createStackNavigator({
 
 settingsFlow.navigationOptions = {
   title: 'Settings',
+  tabBarIcon: <Icon name="settings" size={25} />,
 };
 
 const mainFlow = createBottomTabNavigator(
