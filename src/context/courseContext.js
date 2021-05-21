@@ -5,9 +5,22 @@ import {navigate} from '../navigationRef';
 const courseReducer = (state, action) => {
   switch (action.type) {
     case 'fetch_courses':
-      return action.payload;
+      return {...state, courses: action.payload};
     case 'delete_course':
-      return state.filter((course) => course.id !== action.payload);
+      return {
+        ...state,
+        courses: state.courses.filter((course) => course.id !== action.payload),
+      };
+    case 'add_course':
+      return {
+        ...state,
+        courses: [...state.courses, action.payload],
+      };
+    case 'add_error':
+      return {
+        ...state,
+        errorMessage: action.payload,
+      };
     default:
       return state;
   }
@@ -20,10 +33,10 @@ const fetchCourses = (dispatch) => {
   };
 };
 
-const createCourse = () => {
+const createCourse = (dispatch) => {
   return async ({name, duration, description, capacity}) => {
     try {
-      await courseApi.post('/courses/', {
+      await courseApi.post('/coursetest/', {
         name,
         duration,
         description,
@@ -31,6 +44,10 @@ const createCourse = () => {
       });
     } catch (error) {
       console.log('error in creating course', error);
+      dispatch({
+        type: 'add_error',
+        payload: 'Something went wrong with creating a course!',
+      });
     }
   };
 };
@@ -44,6 +61,10 @@ const deleteCourse = (dispatch) => {
       navigate('CourseList');
     } catch (error) {
       console.log('error in delete user response', error);
+      dispatch({
+        type: 'add_error',
+        payload: 'Something went wrong with deleting a course!',
+      });
     }
   };
 };
@@ -51,5 +72,8 @@ const deleteCourse = (dispatch) => {
 export const {Context, Provider} = createDataContext(
   courseReducer,
   {fetchCourses, createCourse, deleteCourse},
-  [],
+  {
+    courses: [],
+    errorMessage: '',
+  },
 );

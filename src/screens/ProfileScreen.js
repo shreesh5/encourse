@@ -32,7 +32,7 @@ const ProfileScreen = ({navigation}) => {
 
   const fetchCourseNames = (ids) => {
     const courses = [];
-    courseState.forEach((course) => {
+    courseState.courses.forEach((course) => {
       if (ids.includes(course.id)) {
         courses.push(course.name);
       }

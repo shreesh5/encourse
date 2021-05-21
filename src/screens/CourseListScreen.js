@@ -34,7 +34,7 @@ const CourseListScreen = ({navigation}) => {
       ) : (
         <FlatList
           renderItem={renderItem}
-          data={state}
+          data={state.courses}
           contentContainerStyle={styles.courseListContainer}
           keyExtractor={(item) => item.name}
           refreshing={loading}

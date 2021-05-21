@@ -14,7 +14,7 @@ const CourseDetailScreen = ({navigation}) => {
 
   useEffect(() => {
     const id = navigation.getParam('id');
-    const courseInfo = courseState.find((c) => c.id === id);
+    const courseInfo = courseState.courses.find((c) => c.id === id);
     setCourse(courseInfo);
     setLoading(false);
   },[]);
