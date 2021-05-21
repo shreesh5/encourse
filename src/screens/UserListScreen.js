@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {UserListScreenStyles as styles} from '../styles/UserList';
+import Icon from 'react-native-vector-icons/Feather';
 import courseApi from '../api/course';
 
 const CourseListScreen = ({navigation}) => {
@@ -35,10 +36,10 @@ const CourseListScreen = ({navigation}) => {
         <Text style={styles.userText}>{item.username}</Text>
         <View style={styles.userOptions}>
           <TouchableOpacity onPress={() => console.log('Edit user button pressed.')}>
-            <Text style={styles.userOptionEdit}>E</Text>
+            <Icon name="edit-2" size={20} style={styles.userOptionEdit} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => console.log('Delete user button pressed.')}>
-            <Text style={styles.userOptionDelete}>D</Text>
+            <Icon name="trash-2" size={20} />
           </TouchableOpacity>
         </View>
       </View>

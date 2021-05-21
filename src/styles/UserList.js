@@ -33,12 +33,6 @@ export const UserListScreenStyles = StyleSheet.create({
     flex: 0.5,
   },
   userOptionEdit: {
-    fontSize: 23,
-    color: GlobalColors.black,
-    marginRight: 10,
-  },
-  userOptionDelete: {
-    fontSize: 23,
-    color: GlobalColors.black,
+    marginRight: 15,
   },
 });
