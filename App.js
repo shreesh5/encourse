@@ -26,6 +26,7 @@ import {Provider as CourseProvider} from './src/context/CourseContext';
 import {setNavigator} from './src/navigationRef';
 import {GlobalColors} from './src/styles/Global';
 import Icon from 'react-native-vector-icons/Feather';
+import UserDetailScreen from './src/screens/UserDetailScreen';
 
 const loginFlow = createStackNavigator({
   Signin: SigninScreen,
@@ -46,6 +47,7 @@ const settingsFlow = createStackNavigator({
   Settings: ProfileScreen,
   AddCourse: AddCourseScreen,
   UserList: UserListScreen,
+  UserDetail: UserDetailScreen,
 });
 
 settingsFlow.navigationOptions = {

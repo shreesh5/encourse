@@ -45,7 +45,11 @@ const CourseListScreen = ({navigation}) => {
       <View style={styles.userCard}>
         <Text style={styles.userText}>{item.username}</Text>
         <View style={styles.userOptions}>
-          <TouchableOpacity onPress={() => console.log('Edit user button pressed.')}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('UserDetail', {user: item, id: item.id})
+            }
+          >
             <Icon name="edit-2" size={20} style={styles.userOptionEdit} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => deleteUser(item.id)}>
