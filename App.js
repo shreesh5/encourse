@@ -39,7 +39,7 @@ const courseListFlow = createStackNavigator({
 
 courseListFlow.navigationOptions = {
   title: 'Courses',
-  tabBarIcon: <Icon name="book" size={25} />,
+  tabBarIcon: ({tintColor}) => <Icon name="book" size={25} color={tintColor} />,
 };
 
 const settingsFlow = createStackNavigator({
@@ -50,7 +50,9 @@ const settingsFlow = createStackNavigator({
 
 settingsFlow.navigationOptions = {
   title: 'Settings',
-  tabBarIcon: <Icon name="settings" size={25} />,
+  tabBarIcon: ({tintColor}) => (
+    <Icon name="settings" size={25} color={tintColor} />
+  ),
 };
 
 const mainFlow = createBottomTabNavigator(
