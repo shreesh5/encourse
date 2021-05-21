@@ -26,16 +26,6 @@ const CourseListScreen = ({navigation}) => {
     }
   };
 
-  const deleteUser = async (id) => {
-    try {
-      const response = await courseApi.delete(`/usertest/${id}/`);
-      console.log('response', response);
-      fetchUsers();
-    } catch (error) {
-      console.log('Error in delete user call', error);
-    }
-  };
-
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -48,7 +38,7 @@ const CourseListScreen = ({navigation}) => {
           <TouchableOpacity onPress={() => console.log('Edit user button pressed.')}>
             <Icon name="edit-2" size={20} style={styles.userOptionEdit} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => deleteUser(item.id)}>
+          <TouchableOpacity onPress={() => console.log('Delete user button pressed.')}>
             <Icon name="trash-2" size={20} />
           </TouchableOpacity>
         </View>
