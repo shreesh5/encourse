@@ -7,7 +7,7 @@ const CourseForm = ({headerText, errorMessage, onSubmit, submitButtonText}) => {
   const [name, setName] = useState('');
   const [duration, setDuration] = useState('');
   const [description, setDescription] = useState('');
-  const [capacity, setCapacity] = useState(0);
+  const [capacity, setCapacity] = useState('');
 
   return (
     <>
