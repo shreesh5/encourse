@@ -1,11 +1,17 @@
 import React, {useState, useContext, useEffect} from 'react';
-import {View, Text, ActivityIndicator, TouchableOpacity, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import {Context as AuthContext} from '../context/AuthContext';
 import {Context as CourseContext} from '../context/CourseContext';
 import {ProfileScreenStyles as styles} from '../styles/Profile';
 import courseApi from '../api/course';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
   const {state: authState, signout} = useContext(AuthContext);
@@ -79,9 +85,11 @@ const ProfileScreen = () => {
     return (
       <View>
         <Text style={styles.header}>Admin Settings</Text>
-        <View style={styles.row}>
-          <Text style={styles.settingHeader}>Add Course</Text>
-        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('AddCourse')}>
+          <View style={styles.row}>
+            <Text style={styles.settingHeader}>Add Course</Text>
+          </View>
+        </TouchableOpacity>
         <View style={styles.line} />
         <View style={styles.row}>
           <Text style={styles.settingHeader}>View, Edit, Delete Users</Text>

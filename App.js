@@ -18,6 +18,7 @@ import SigninScreen from './src/screens/SigninScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
+import AddCourseScreen from './src/screens/AddCourseScreen';
 
 import {Provider as AuthProvider} from './src/context/AuthContext';
 import {Provider as CourseProvider} from './src/context/CourseContext';
@@ -40,6 +41,7 @@ courseListFlow.navigationOptions = {
 
 const settingsFlow = createStackNavigator({
   Settings: ProfileScreen,
+  AddCourse: AddCourseScreen,
 });
 
 settingsFlow.navigationOptions = {
