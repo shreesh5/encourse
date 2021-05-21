@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {Context as AuthContext} from '../context/AuthContext';
 import {Context as CourseContext} from '../context/CourseContext';
+import Icon from 'react-native-vector-icons/Feather';
 import {ProfileScreenStyles as styles} from '../styles/Profile';
 import courseApi from '../api/course';
 
@@ -88,12 +89,18 @@ const ProfileScreen = ({navigation}) => {
         <TouchableOpacity onPress={() => navigation.navigate('AddCourse')}>
           <View style={styles.row}>
             <Text style={styles.settingHeader}>Add Course</Text>
+            <View style={styles.iconView}>
+              <Icon name="chevron-right" size={23} />
+            </View>
           </View>
         </TouchableOpacity>
         <View style={styles.line} />
         <TouchableOpacity onPress={() => navigation.navigate('UserList')}>
           <View style={styles.row}>
             <Text style={styles.settingHeader}>View, Edit, Delete Users</Text>
+            <View style={styles.iconView}>
+              <Icon name="chevron-right" size={23} />
+            </View>
           </View>
         </TouchableOpacity>
         <View style={styles.line} />

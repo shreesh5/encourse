@@ -55,4 +55,8 @@ export const ProfileScreenStyles = StyleSheet.create({
     color: GlobalColors.white,
     fontSize: 16,
   },
+  iconView: {
+    width: '50%',
+    alignItems: 'flex-end',
+  },
 });
