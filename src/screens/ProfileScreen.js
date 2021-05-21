@@ -91,9 +91,11 @@ const ProfileScreen = ({navigation}) => {
           </View>
         </TouchableOpacity>
         <View style={styles.line} />
-        <View style={styles.row}>
-          <Text style={styles.settingHeader}>View, Edit, Delete Users</Text>
-        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('UserList')}>
+          <View style={styles.row}>
+            <Text style={styles.settingHeader}>View, Edit, Delete Users</Text>
+          </View>
+        </TouchableOpacity>
         <View style={styles.line} />
       </View>
     );
