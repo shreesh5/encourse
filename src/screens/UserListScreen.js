@@ -55,7 +55,7 @@ const CourseListScreen = ({navigation}) => {
           renderItem={renderItem}
           data={users}
           contentContainerStyle={styles.userListContainer}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
           refreshing={loading}
           onRefresh={() => {
             setLoading(true);
