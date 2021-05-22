@@ -24,6 +24,7 @@ const UserDetailScreen = ({navigation}) => {
         city,
         country,
       });
+      navigation.pop();
       console.log('response', response);
     } catch (error) {
       console.log('error in update user response', error);

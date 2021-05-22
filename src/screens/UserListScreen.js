@@ -38,6 +38,14 @@ const CourseListScreen = ({navigation}) => {
 
   useEffect(() => {
     fetchUsers();
+    const listener = navigation.addListener('didFocus', () => {
+      setLoading(true);
+      fetchUsers();
+      setLoading(false);
+    });
+    return () => {
+      listener.remove();
+    };
   }, []);
 
   const renderItem = ({item}) => {
