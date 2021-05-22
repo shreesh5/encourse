@@ -20,14 +20,15 @@ import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import AddCourseScreen from './src/screens/AddCourseScreen';
 import UserListScreen from './src/screens/UserListScreen';
+import UserDetailScreen from './src/screens/UserDetailScreen';
+import EditCourseScreen from './src/screens/EditCourseScreen';
+import EditProfileScreen from './src/screens/EditProfileScreen';
 
 import {Provider as AuthProvider} from './src/context/AuthContext';
 import {Provider as CourseProvider} from './src/context/CourseContext';
 import {setNavigator} from './src/navigationRef';
 import {GlobalColors} from './src/styles/Global';
 import Icon from 'react-native-vector-icons/Feather';
-import UserDetailScreen from './src/screens/UserDetailScreen';
-import EditCourseScreen from './src/screens/EditCourseScreen';
 
 const loginFlow = createStackNavigator({
   Signin: SigninScreen,
@@ -50,6 +51,7 @@ const settingsFlow = createStackNavigator({
   AddCourse: AddCourseScreen,
   UserList: UserListScreen,
   UserDetail: UserDetailScreen,
+  EditProfile: EditProfileScreen,
 });
 
 settingsFlow.navigationOptions = {

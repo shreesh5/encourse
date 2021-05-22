@@ -18,7 +18,7 @@ const ProfileScreen = ({navigation}) => {
   const {state: authState, signout} = useContext(AuthContext);
   const {state: courseState} = useContext(CourseContext);
 
-  useEffect(() => {
+  const getUser = () => {
     courseApi
       .get('/usertest/' + authState.pk + '/')
       .then((response) => {
@@ -29,6 +29,18 @@ const ProfileScreen = ({navigation}) => {
       .catch((error) =>
         console.log('error while fetching user settings', error),
       );
+  };
+
+  useEffect(() => {
+    getUser();
+
+    const listener = navigation.addListener('didFocus', () => {
+      getUser();
+    });
+
+    return () => {
+      listener.remove();
+    };
   },[]);
 
   const fetchCourseNames = (ids) => {
@@ -123,7 +135,7 @@ const ProfileScreen = ({navigation}) => {
         {loading ? <ActivityIndicator /> : settings()}
         <View style={styles.buttonView}>
           <TouchableOpacity
-            onPress={() => console.log('Edit Profile button pressed')}
+            onPress={() => navigation.navigate('EditProfile', {user})}
           >
             <View style={styles.buttonContainer}>
               <Text style={styles.buttonText}>Edit Profile</Text>
