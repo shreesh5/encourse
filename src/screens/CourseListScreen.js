@@ -9,6 +9,18 @@ const CourseListScreen = ({navigation}) => {
 
   useEffect(() => {
     fetchCourses();
+
+    const listener = navigation.addListener('didFocus', () => {
+      fetchCourses();
+    });
+
+    // Keeping a dangling listener can lead to a memory leak
+    // so it is important to clean up after adding a listener
+    // When a function is returned from useEffect, it will only
+    // get called once the instance of IndexScreen is completely destroyed
+    return () => {
+      listener.remove();
+    };
   }, []);
 
   const renderItem = ({item}) => {

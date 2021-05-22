@@ -85,7 +85,14 @@ const CourseDetailScreen = ({navigation}) => {
             <View style={styles.buttonContainer}>
               <Button
                 label="Edit Course"
-                onPress={() => console.log('Edit course button clicked')}
+                onPress={() =>
+                  navigation.navigate('EditCourse', {
+                    id: course.id,
+                    onGoBack: (updatedCourse) => {
+                      setCourse(updatedCourse);
+                    },
+                  })
+                }
                 labelStyle={styles.buttonText}
                 containerStyle={styles.adminButton}
               />

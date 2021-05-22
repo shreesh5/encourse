@@ -6,6 +6,13 @@ const courseReducer = (state, action) => {
   switch (action.type) {
     case 'fetch_courses':
       return {...state, courses: action.payload};
+    case 'update_course':
+      return {
+        ...state,
+        courses: state.courses.map((course) => {
+          return course.id === action.payload.id ? action.payload : course;
+        }),
+      };
     case 'delete_course':
       return {
         ...state,
@@ -34,7 +41,7 @@ const fetchCourses = (dispatch) => {
 };
 
 const createCourse = (dispatch) => {
-  return async ({name, duration, description, capacity}) => {
+  return async (name, duration, description, capacity) => {
     try {
       await courseApi.post('/coursetest/', {
         name,
@@ -69,9 +76,37 @@ const deleteCourse = (dispatch) => {
   };
 };
 
+const updateCourse = (dispatch) => {
+  return async (id, name, duration, description, capacity, callback) => {
+    try {
+      const response = await courseApi.put(`/coursetest/${id}/`, {
+        id,
+        name,
+        duration,
+        description,
+        capacity,
+      });
+      // console.log('response', response);
+      dispatch({
+        type: 'update_course',
+        payload: {id, name, duration, description, capacity},
+      });
+      if (callback) {
+        callback();
+      }
+    } catch (error) {
+      console.log('error in update user response', error);
+      dispatch({
+        type: 'add_error',
+        payload: 'Something went wrong with updating a course!',
+      });
+    }
+  };
+};
+
 export const {Context, Provider} = createDataContext(
   courseReducer,
-  {fetchCourses, createCourse, deleteCourse},
+  {fetchCourses, createCourse, deleteCourse, updateCourse},
   {
     courses: [],
     errorMessage: '',

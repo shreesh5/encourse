@@ -3,11 +3,18 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import Spacer from './Spacer';
 import {AuthFormStyles as styles} from '../styles/AuthForm';
 
-const CourseForm = ({headerText, errorMessage, onSubmit, submitButtonText}) => {
-  const [name, setName] = useState('');
-  const [duration, setDuration] = useState('');
-  const [description, setDescription] = useState('');
-  const [capacity, setCapacity] = useState('');
+const CourseForm = ({
+  headerText,
+  errorMessage,
+  onSubmit,
+  submitButtonText,
+  initialValues,
+}) => {
+  const [name, setName] = useState(initialValues.name);
+  const [duration, setDuration] = useState(initialValues.duration);
+  const [description, setDescription] = useState(initialValues.description);
+  const [capacity, setCapacity] = useState(initialValues.capacity);
+  const [users, setUsers] = useState(initialValues.users);
 
   return (
     <>
@@ -60,7 +67,22 @@ const CourseForm = ({headerText, errorMessage, onSubmit, submitButtonText}) => {
       </View>
       {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
       <Spacer>
-        <TouchableOpacity onPress={() => onSubmit({name, duration, description, capacity})}>
+        <TouchableOpacity
+          onPress={() => {
+            if (initialValues.id) {
+              onSubmit(
+                initialValues.id,
+                name,
+                duration,
+                description,
+                capacity,
+                users,
+              );
+            } else {
+              onSubmit(name, duration, description, capacity);
+            }
+          }}
+        >
           <View style={styles.submitButtonContainer}>
             <Text style={styles.submitButtonText}>{submitButtonText}</Text>
           </View>

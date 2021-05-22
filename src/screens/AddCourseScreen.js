@@ -13,6 +13,12 @@ const AddCourseScreen = () => {
         errorMessage={state.errorMessage}
         submitButtonText="Add Course"
         onSubmit={createCourse}
+        initialValues={{
+          name: '',
+          duration: '',
+          description: '',
+          capacity: '',
+        }}
       />
     </View>
   );

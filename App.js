@@ -27,6 +27,7 @@ import {setNavigator} from './src/navigationRef';
 import {GlobalColors} from './src/styles/Global';
 import Icon from 'react-native-vector-icons/Feather';
 import UserDetailScreen from './src/screens/UserDetailScreen';
+import EditCourseScreen from './src/screens/EditCourseScreen';
 
 const loginFlow = createStackNavigator({
   Signin: SigninScreen,
@@ -36,6 +37,7 @@ const loginFlow = createStackNavigator({
 const courseListFlow = createStackNavigator({
   CourseList: CourseListScreen,
   CourseDetail: CourseDetailScreen,
+  EditCourse: EditCourseScreen,
 });
 
 courseListFlow.navigationOptions = {
