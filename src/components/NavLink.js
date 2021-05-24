@@ -4,9 +4,11 @@ import {withNavigation} from 'react-navigation';
 import Spacer from './Spacer';
 import {NavLinkStyles as styles} from '../styles/NavLink';
 
-const NavLink = ({navigation, text, routeName}) => {
+const NavLink = ({navigation, text, routeName, testID}) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(routeName)}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate(routeName)}
+      testID={testID}>
       <Spacer>
         <Text style={styles.link}>{text}</Text>
       </Spacer>
