@@ -9,6 +9,7 @@ const AuthForm = ({
   onSubmit,
   submitButtonText,
   type,
+  buttonTestID,
 }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -27,6 +28,7 @@ const AuthForm = ({
           autoCapitalize="none"
           autoCorrect={false}
           style={styles.inputContainer}
+          placeholder="Username"
         />
       </View>
       {type === 'register' && (
@@ -40,6 +42,7 @@ const AuthForm = ({
               autoCapitalize="none"
               autoCorrect={false}
               style={styles.inputContainer}
+              placeholder="Email"
             />
           </View>
         </>
@@ -54,11 +57,15 @@ const AuthForm = ({
           autoCorrect={false}
           secureTextEntry
           style={styles.inputContainer}
+          placeholder="Password"
         />
       </View>
       {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
       <Spacer>
-        <TouchableOpacity onPress={() => onSubmit({username, email, password})}>
+        <TouchableOpacity
+          onPress={() => onSubmit({username, email, password})}
+          testID={buttonTestID}
+        >
           <View style={styles.submitButtonContainer}>
             <Text style={styles.submitButtonText}>{submitButtonText}</Text>
           </View>
