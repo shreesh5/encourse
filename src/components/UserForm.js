@@ -3,7 +3,7 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import Spacer from './Spacer';
 import {AuthFormStyles as styles} from '../styles/AuthForm';
 
-const UserForm = ({user, onSubmit}) => {
+const UserForm = ({user, onSubmit, buttonTestID}) => {
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
   const [school, setSchool] = useState(user.school);
@@ -57,7 +57,7 @@ const UserForm = ({user, onSubmit}) => {
       </View>
       <Spacer />
       <View style={styles.labelInputContainer}>
-        <Text style={styles.inputLabel}>City</Text>
+        <Text style={styles.inputLabel}>Country</Text>
         <TextInput
           value={country}
           onChangeText={setCountry}
@@ -78,6 +78,7 @@ const UserForm = ({user, onSubmit}) => {
               country,
             })
           }
+          testID={buttonTestID}
         >
           <View style={styles.submitButtonContainer}>
             <Text style={styles.submitButtonText}>Save</Text>
