@@ -9,6 +9,7 @@ const CourseForm = ({
   onSubmit,
   submitButtonText,
   initialValues,
+  buttonTestID,
 }) => {
   const [name, setName] = useState(initialValues.name);
   const [duration, setDuration] = useState(initialValues.duration);
@@ -29,6 +30,7 @@ const CourseForm = ({
           autoCapitalize="none"
           autoCorrect={false}
           style={styles.inputContainer}
+          placeholder="CSE 101"
         />
       </View>
       <Spacer />
@@ -40,6 +42,7 @@ const CourseForm = ({
           autoCapitalize="none"
           autoCorrect={false}
           style={styles.inputContainer}
+          placeholder="1 month"
         />
       </View>
       <Spacer />
@@ -51,6 +54,7 @@ const CourseForm = ({
           autoCapitalize="none"
           autoCorrect={false}
           style={styles.inputContainer}
+          placeholder="Example Description"
         />
       </View>
       <Spacer />
@@ -63,6 +67,7 @@ const CourseForm = ({
           autoCorrect={false}
           style={styles.inputContainer}
           keyboardType="number-pad"
+          placeholder="5"
         />
       </View>
       {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
@@ -82,6 +87,7 @@ const CourseForm = ({
               onSubmit(name, duration, description, capacity);
             }
           }}
+          testID={buttonTestID}
         >
           <View style={styles.submitButtonContainer}>
             <Text style={styles.submitButtonText}>{submitButtonText}</Text>
