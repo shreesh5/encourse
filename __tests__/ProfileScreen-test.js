@@ -5,7 +5,7 @@ import {render, fireEvent} from '@testing-library/react-native';
 import ProfileScreen from '../src/screens/ProfileScreen';
 import * as AuthContext from '../src/context/AuthContext';
 
-describe('<CourseDetailScreen />', () => {
+describe('<ProfileScreen />', () => {
   const navigation = {
     navigate: jest.fn(),
     pop: jest.fn(),
