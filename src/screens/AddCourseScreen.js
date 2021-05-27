@@ -19,6 +19,7 @@ const AddCourseScreen = () => {
           description: '',
           capacity: '',
         }}
+        buttonTestID="addcourse-button"
       />
     </View>
   );
