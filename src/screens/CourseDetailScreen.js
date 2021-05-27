@@ -2,22 +2,23 @@ import React, {useContext, useState, useEffect} from 'react';
 import {View, Text, ActivityIndicator} from 'react-native';
 import {Context as AuthContext} from '../context/AuthContext';
 import {useCourseContext} from '../context/CourseContext';
+import {useAuthContext} from '../context/AuthContext';
 import {CourseDetailStyles as styles} from '../styles/CourseDetail';
 import courseApi from '../api/course';
 import Button from '../components/Button';
 
 const CourseDetailScreen = ({navigation}) => {
-  const [course, setCourse] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [course, setCourse] = useState(navigation.getParam('course'));
+  const [loading, setLoading] = useState(false);
   const {state: courseState, deleteCourse} = useCourseContext();
-  const {state: authState} = useContext(AuthContext);
+  const {state: authState} = useAuthContext();
 
-  useEffect(() => {
-    const id = navigation.getParam('id');
-    const courseInfo = courseState.courses.find((c) => c.id === id);
-    setCourse(courseInfo);
-    setLoading(false);
-  },[]);
+  // useEffect(() => {
+  //   const id = navigation.getParam('id');
+  //   const courseInfo = courseState.courses.find((c) => c.id === id);
+  //   setCourse(courseInfo);
+  //   setLoading(false);
+  // },[]);
 
   const enrollInCourse = async (userId, courseId) => {
     try {
@@ -71,6 +72,7 @@ const CourseDetailScreen = ({navigation}) => {
                 onPress={() => enrollInCourse(authState.pk, course.id)}
                 labelStyle={styles.buttonText}
                 containerStyle={styles.enrollButton}
+                testID="enroll-button"
               />
             ) : (
               <Button
@@ -78,6 +80,7 @@ const CourseDetailScreen = ({navigation}) => {
                 onPress={() => unEnrollInCourse(authState.pk, course.id)}
                 labelStyle={styles.buttonText}
                 containerStyle={styles.enrollButton}
+                testID="drop-button"
               />
             )}
           </View>
@@ -95,12 +98,14 @@ const CourseDetailScreen = ({navigation}) => {
                 }
                 labelStyle={styles.buttonText}
                 containerStyle={styles.adminButton}
+                testID="edit-button"
               />
               <Button
                 label="Delete Course"
                 onPress={() => deleteCourse(course.id)}
                 labelStyle={styles.buttonText}
                 containerStyle={styles.adminButton}
+                testID="delete-button"
               />
             </View>
           ) : null}

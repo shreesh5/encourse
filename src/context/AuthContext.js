@@ -1,3 +1,4 @@
+import {useContext} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import createDataContext from './createDataContext';
 import courseApi from '../api/course';
@@ -124,3 +125,5 @@ export const {Context, Provider} = createDataContext(
   },
   {token: null, errorMessage: '', role: '', pk: null},
 );
+
+export const useAuthContext = () => useContext(Context);

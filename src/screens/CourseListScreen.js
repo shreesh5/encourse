@@ -28,7 +28,7 @@ const CourseListScreen = ({navigation}) => {
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('CourseDetail', {
-            id: item.id,
+            course: item,
           });
         }}
         testID={`button-${item.id}`}
