@@ -7,7 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 import {Context as AuthContext} from '../context/AuthContext';
-import {Context as CourseContext} from '../context/CourseContext';
+import {useCourseContext} from '../context/CourseContext';
 import Icon from 'react-native-vector-icons/Feather';
 import {ProfileScreenStyles as styles} from '../styles/Profile';
 import courseApi from '../api/course';
@@ -16,7 +16,7 @@ const ProfileScreen = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
   const {state: authState, signout} = useContext(AuthContext);
-  const {state: courseState} = useContext(CourseContext);
+  const {state: courseState} = useCourseContext();
 
   const getUser = () => {
     courseApi

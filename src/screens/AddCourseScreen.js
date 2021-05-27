@@ -1,10 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import CourseForm from '../components/CourseForm';
-import {Context as CourseContext} from '../context/CourseContext';
+import {useCourseContext} from '../context/CourseContext';
 
 const AddCourseScreen = () => {
-  const {state, createCourse} = useContext(CourseContext);
+  const {state, createCourse} = useCourseContext();
 
   return (
     <View>

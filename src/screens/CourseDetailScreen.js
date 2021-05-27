@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {View, Text, ActivityIndicator} from 'react-native';
 import {Context as AuthContext} from '../context/AuthContext';
-import {Context as CourseContext} from '../context/CourseContext';
+import {useCourseContext} from '../context/CourseContext';
 import {CourseDetailStyles as styles} from '../styles/CourseDetail';
 import courseApi from '../api/course';
 import Button from '../components/Button';
@@ -9,7 +9,7 @@ import Button from '../components/Button';
 const CourseDetailScreen = ({navigation}) => {
   const [course, setCourse] = useState({});
   const [loading, setLoading] = useState(true);
-  const {state: courseState, deleteCourse} = useContext(CourseContext);
+  const {state: courseState, deleteCourse} = useCourseContext();
   const {state: authState} = useContext(AuthContext);
 
   useEffect(() => {

@@ -1,7 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList, TouchableOpacity, ActivityIndicator} from 'react-native';
 import {CourseListScreenStyles as styles} from '../styles/CourseList';
-import {Context as CourseContext, useCourseContext} from '../context/CourseContext';
+import {useCourseContext} from '../context/CourseContext';
 
 const CourseListScreen = ({navigation}) => {
   const [loading, setLoading] = useState(false);

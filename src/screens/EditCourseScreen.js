@@ -1,13 +1,13 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {View, ActivityIndicator} from 'react-native';
-import {Context as CourseContext} from '../context/CourseContext';
+import {useCourseContext} from '../context/CourseContext';
 import {CourseDetailStyles as styles} from '../styles/CourseDetail';
 import CourseForm from '../components/CourseForm';
 
 const EditCourseScreen = ({navigation}) => {
   const [course, setCourse] = useState({});
   const [loading, setLoading] = useState(true);
-  const {state: courseState, updateCourse} = useContext(CourseContext);
+  const {state: courseState, updateCourse} = useCourseContext();
 
   useEffect(() => {
     const id = navigation.getParam('id');
