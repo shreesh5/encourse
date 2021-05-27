@@ -5,16 +5,16 @@ import {CourseDetailStyles as styles} from '../styles/CourseDetail';
 import CourseForm from '../components/CourseForm';
 
 const EditCourseScreen = ({navigation}) => {
-  const [course, setCourse] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [course, setCourse] = useState(navigation.getParam('course'));
+  const [loading, setLoading] = useState(false);
   const {state: courseState, updateCourse} = useCourseContext();
 
-  useEffect(() => {
-    const id = navigation.getParam('id');
-    const courseInfo = courseState.courses.find((c) => c.id === id);
-    setCourse(courseInfo);
-    setLoading(false);
-  },[]);
+  // useEffect(() => {
+  //   const id = navigation.getParam('id');
+  //   const courseInfo = courseState.courses.find((c) => c.id === id);
+  //   setCourse(courseInfo);
+  //   setLoading(false);
+  // },[]);
 
   return (
     <View style={styles.contentView}>
@@ -22,6 +22,7 @@ const EditCourseScreen = ({navigation}) => {
         <ActivityIndicator />
       ) : (
         <CourseForm
+          buttonTestID="updatecourse-button"
           headerText="Edit Course"
           errorMessage={courseState.errorMessage}
           submitButtonText="Save"

@@ -87,7 +87,7 @@ const CourseDetailScreen = ({navigation}) => {
                 label="Edit Course"
                 onPress={() =>
                   navigation.navigate('EditCourse', {
-                    id: course.id,
+                    course,
                     onGoBack: (updatedCourse) => {
                       setCourse(updatedCourse);
                     },
