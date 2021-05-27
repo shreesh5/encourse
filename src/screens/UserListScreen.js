@@ -17,7 +17,7 @@ const CourseListScreen = ({navigation}) => {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const response = await courseApi.get('/users/');
+      const response = await courseApi.get('/usertest/');
       console.log('response', response.data);
       setUsers(response.data);
       setLoading(false);
