@@ -1,6 +1,7 @@
 import createDataContext from './createDataContext';
 import courseApi from '../api/course';
 import {navigate} from '../navigationRef';
+import {useContext} from 'react/cjs/react.development';
 
 const courseReducer = (state, action) => {
   switch (action.type) {
@@ -112,3 +113,5 @@ export const {Context, Provider} = createDataContext(
     errorMessage: '',
   },
 );
+
+export const useCourseContext = () => useContext(Context);

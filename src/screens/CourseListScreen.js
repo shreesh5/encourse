@@ -1,11 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {View, Text, FlatList, TouchableOpacity, ActivityIndicator} from 'react-native';
 import {CourseListScreenStyles as styles} from '../styles/CourseList';
-import {Context as CourseContext} from '../context/CourseContext';
+import {Context as CourseContext, useCourseContext} from '../context/CourseContext';
 
 const CourseListScreen = ({navigation}) => {
   const [loading, setLoading] = useState(false);
-  const {state, fetchCourses} = useContext(CourseContext);
+  const {state, fetchCourses} = useCourseContext();
 
   useEffect(() => {
     fetchCourses();
@@ -31,6 +31,7 @@ const CourseListScreen = ({navigation}) => {
             id: item.id,
           });
         }}
+        testID={`button-${item.id}`}
       >
         <View style={styles.courseCard}>
           <Text style={styles.courseText}>{item.name}</Text>
