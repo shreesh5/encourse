@@ -17,10 +17,12 @@ const SigninScreen = () => {
         errorMessage={state.errorMessage}
         submitButtonText="Sign In"
         onSubmit={signin}
+        buttonTestID="signin-button"
       />
       <NavLink
         routeName="Signup"
         text="Don't have an account? Sign up instead."
+        testID="nav-signup-link"
       />
     </View>
   );
