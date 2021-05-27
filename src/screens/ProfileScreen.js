@@ -7,35 +7,33 @@ import {
   ScrollView,
 } from 'react-native';
 import {useAuthContext} from '../context/AuthContext';
-import {useCourseContext} from '../context/CourseContext';
+// import {useCourseContext} from '../context/CourseContext';
 import Icon from 'react-native-vector-icons/Feather';
 import {ProfileScreenStyles as styles} from '../styles/Profile';
 
 const ProfileScreen = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const {state: authState, signout, getUserDetails} = useAuthContext();
-  const {state: courseState} = useCourseContext();
+  // const {state: courseState} = useCourseContext();
 
   useEffect(() => {
-    console.log('auth state user', authState.user);
     if (!authState.user) {
       getUserDetails(authState.pk);
     }
     if (loading && authState.user) {
-      console.log('setting loading false');
       setLoading(false);
     }
   },[authState.user]);
 
-  const fetchCourseNames = (ids) => {
-    const courses = [];
-    courseState.courses.forEach((course) => {
-      if (ids.includes(course.id)) {
-        courses.push(course.name);
-      }
-    });
-    return courses;
-  };
+  // const fetchCourseNames = (ids) => {
+  //   const courses = [];
+  //   courseState.courses.forEach((course) => {
+  //     if (ids.includes(course.id)) {
+  //       courses.push(course.name);
+  //     }
+  //   });
+  //   return courses;
+  // };
 
   const myProfile = () => {
     return (
@@ -82,7 +80,7 @@ const ProfileScreen = ({navigation}) => {
     return (
       <View>
         <Text style={styles.header}>Admin Settings</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('AddCourse')}>
+        <TouchableOpacity onPress={() => navigation.navigate('AddCourse')} testID="add-course-button">
           <View style={styles.row}>
             <Text style={styles.settingHeader}>Add Course</Text>
             <View style={styles.iconView}>
@@ -91,7 +89,7 @@ const ProfileScreen = ({navigation}) => {
           </View>
         </TouchableOpacity>
         <View style={styles.line} />
-        <TouchableOpacity onPress={() => navigation.navigate('UserList')}>
+        <TouchableOpacity onPress={() => navigation.navigate('UserList')} testID="view-users-button">
           <View style={styles.row}>
             <Text style={styles.settingHeader}>View, Edit, Delete Users</Text>
             <View style={styles.iconView}>
@@ -110,12 +108,12 @@ const ProfileScreen = ({navigation}) => {
         {myProfile()}
         {authState.role === 'superuser' ? adminSettings() : null}
         <View style={styles.buttonView}>
-          <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
+          <TouchableOpacity onPress={() => navigation.navigate('EditProfile')} testID="edit-profile-button">
             <View style={styles.buttonContainer}>
               <Text style={styles.buttonText}>Edit Profile</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => signout()}>
+          <TouchableOpacity onPress={() => signout()} testID="signout-button">
             <View style={styles.buttonContainer}>
               <Text style={styles.buttonText}>Signout</Text>
             </View>
