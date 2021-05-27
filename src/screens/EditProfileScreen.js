@@ -1,39 +1,15 @@
 import React from 'react';
 import {View} from 'react-native';
+import {useAuthContext} from '../context/AuthContext';
 import {UserDetailStyles as styles} from '../styles/UserDetail';
 import UserForm from '../components/UserForm';
-import courseApi from '../api/course';
 
 const EditProfileScreen = ({navigation}) => {
-  const updateUser = async ({
-    id,
-    email,
-    username,
-    password,
-    school,
-    city,
-    country,
-  }) => {
-    try {
-      const response = await courseApi.put(`/usertest/${id}/`, {
-        id,
-        email,
-        username,
-        password,
-        school,
-        city,
-        country,
-      });
-      navigation.pop();
-      console.log('response', response);
-    } catch (error) {
-      console.log('error in update user response', error);
-    }
-  };
+  const {state, updateUserDetails} = useAuthContext();
 
   return (
     <View style={styles.contentView}>
-      <UserForm user={navigation.getParam('user')} onSubmit={updateUser} />
+      <UserForm user={state.user} onSubmit={updateUserDetails} />
     </View>
   );
 };

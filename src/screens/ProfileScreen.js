@@ -10,38 +10,22 @@ import {useAuthContext} from '../context/AuthContext';
 import {useCourseContext} from '../context/CourseContext';
 import Icon from 'react-native-vector-icons/Feather';
 import {ProfileScreenStyles as styles} from '../styles/Profile';
-import courseApi from '../api/course';
 
 const ProfileScreen = ({navigation}) => {
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState({});
-  const {state: authState, signout} = useAuthContext();
+  const {state: authState, signout, getUserDetails} = useAuthContext();
   const {state: courseState} = useCourseContext();
 
-  const getUser = () => {
-    courseApi
-      .get('/usertest/' + authState.pk + '/')
-      .then((response) => {
-        console.log('response usertest', response.data);
-        setUser(response.data);
-        setLoading(false);
-      })
-      .catch((error) =>
-        console.log('error while fetching user settings', error),
-      );
-  };
-
   useEffect(() => {
-    getUser();
-
-    const listener = navigation.addListener('didFocus', () => {
-      getUser();
-    });
-
-    return () => {
-      listener.remove();
-    };
-  },[]);
+    console.log('auth state user', authState.user);
+    if (!authState.user) {
+      getUserDetails(authState.pk);
+    }
+    if (loading && authState.user) {
+      console.log('setting loading false');
+      setLoading(false);
+    }
+  },[authState.user]);
 
   const fetchCourseNames = (ids) => {
     const courses = [];
@@ -60,35 +44,35 @@ const ProfileScreen = ({navigation}) => {
         <View>
           <View style={styles.row}>
             <Text style={styles.settingHeader}>Username</Text>
-            <Text style={styles.settingValue}>{user.username}</Text>
+            <Text style={styles.settingValue}>{authState.user.username}</Text>
           </View>
           <View style={styles.line} />
           <View style={styles.row}>
             <Text style={styles.settingHeader}>Email</Text>
-            <Text style={styles.settingValue}>{user.email}</Text>
+            <Text style={styles.settingValue}>{authState.user.email}</Text>
           </View>
           <View style={styles.line} />
           <View style={styles.row}>
             <Text style={styles.settingHeader}>School</Text>
-            <Text style={styles.settingValue}>{user.school}</Text>
+            <Text style={styles.settingValue}>{authState.user.school}</Text>
           </View>
           <View style={styles.line} />
           <View style={styles.row}>
             <Text style={styles.settingHeader}>City</Text>
-            <Text style={styles.settingValue}>{user.city}</Text>
+            <Text style={styles.settingValue}>{authState.user.city}</Text>
           </View>
           <View style={styles.line} />
           <View style={styles.row}>
             <Text style={styles.settingHeader}>Country</Text>
-            <Text style={styles.settingValue}>{user.country}</Text>
+            <Text style={styles.settingValue}>{authState.user.country}</Text>
           </View>
           <View style={styles.line} />
-          <View style={styles.row}>
+          {/* <View style={styles.row}>
             <Text style={styles.settingHeader}>Courses</Text>
             <Text style={styles.settingValue}>
-              {fetchCourseNames(user.courses)}
+              {fetchCourseNames(authState.user.courses)}
             </Text>
-          </View>
+          </View> */}
         </View>
       </View>
     );
@@ -124,19 +108,9 @@ const ProfileScreen = ({navigation}) => {
     return (
       <View>
         {myProfile()}
-        {adminSettings()}
-      </View>
-    );
-  };
-
-  return (
-    <View style={styles.contentView}>
-      <ScrollView>
-        {loading ? <ActivityIndicator /> : settings()}
+        {authState.role === 'superuser' ? adminSettings() : null}
         <View style={styles.buttonView}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('EditProfile', {user})}
-          >
+          <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
             <View style={styles.buttonContainer}>
               <Text style={styles.buttonText}>Edit Profile</Text>
             </View>
@@ -147,7 +121,13 @@ const ProfileScreen = ({navigation}) => {
             </View>
           </TouchableOpacity>
         </View>
-      </ScrollView>
+      </View>
+    );
+  };
+
+  return (
+    <View style={styles.contentView}>
+      <ScrollView>{loading ? <ActivityIndicator /> : settings()}</ScrollView>
     </View>
   );
 };

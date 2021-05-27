@@ -14,11 +14,16 @@ const authReducer = (state, action) => {
         token: action.payload.token,
         role: action.payload.role,
         pk: action.payload.pk,
+        uesr: action.payload.user,
       };
+    case 'save_details':
+      return {...state, user: action.payload};
+    case 'update_details':
+      return {...state, user: action.payload};
     case 'clear_error_message':
       return {...state, errorMessage: ''};
     case 'signout':
-      return {token: null, errorMessage: '', role: '', pk: null};
+      return {...state, token: null, errorMessage: '', role: '', pk: null};
     default:
       return state;
   }
@@ -29,7 +34,7 @@ const tryLocalSignin = (dispatch) => async () => {
   const role = await AsyncStorage.getItem('role');
   const pk = await AsyncStorage.getItem('pk');
   if (token && role && pk) {
-    dispatch({type: 'signin', payload: {token, role, pk}});
+    dispatch({type: 'signin', payload: {token, role, pk, user: null}});
     navigate('CourseList');
   } else {
     navigate('Signin');
@@ -61,6 +66,7 @@ const signup = (dispatch) => {
           token: response.data.token,
           role: response.data.user_role,
           pk: `${response.data.id}`,
+          user: null,
         },
       });
       navigate('CourseList');
@@ -92,6 +98,7 @@ const signin = (dispatch) => {
           token: response.data.token,
           role: response.data.user_role,
           pk: response.data.user_id,
+          user: response.data.user,
         },
       });
       navigate('CourseList');
@@ -114,6 +121,55 @@ const signout = (dispatch) => {
   };
 };
 
+const getUserDetails = (dispatch) => {
+  return async (userPK) => {
+    try {
+      const response = await courseApi.get('/usertest/' + userPK + '/');
+      console.log('response for get user details', response.data);
+      dispatch({type: 'save_details', payload: response.data});
+    } catch (error) {
+      dispatch({
+        type: 'add_error',
+        payload: 'Something went wrong with fetching user details',
+      });
+    }
+  };
+};
+
+const updateUserDetails = (dispatch) => {
+  return async ({id, email, username, password, school, city, country}) => {
+    try {
+      const response = await courseApi.put(`/usertest/${id}/`, {
+        id,
+        email,
+        username,
+        password,
+        school,
+        city,
+        country,
+      });
+      dispatch({
+        type: 'update_details',
+        payload: {
+          id,
+          email,
+          username,
+          password,
+          school,
+          city,
+          country,
+        },
+      });
+      navigate('Settings');
+    } catch (error) {
+      dispatch({
+        type: 'add_error',
+        payload: 'Something went wrong with updating user details',
+      });
+    }
+  };
+};
+
 export const {Context, Provider} = createDataContext(
   authReducer,
   {
@@ -122,8 +178,10 @@ export const {Context, Provider} = createDataContext(
     signin,
     signup,
     signout,
+    getUserDetails,
+    updateUserDetails,
   },
-  {token: null, errorMessage: '', role: '', pk: null},
+  {token: null, errorMessage: '', role: '', pk: null, user: null},
 );
 
 export const useAuthContext = () => useContext(Context);
