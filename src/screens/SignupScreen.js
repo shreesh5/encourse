@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {NavigationEvents} from 'react-navigation';
 import {useAuthContext} from '../context/AuthContext';
@@ -17,10 +17,12 @@ const SignupScreen = ({navigation}) => {
         submitButtonText="Sign Up"
         onSubmit={signup}
         type="register"
+        buttonTestID="signup-button"
       />
       <NavLink
         routeName="Signin"
         text="Already have an account? Sign in instead."
+        testID="nav-signin-link"
       />
     </View>
   );
