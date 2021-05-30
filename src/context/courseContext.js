@@ -37,7 +37,10 @@ const courseReducer = (state, action) => {
 const fetchCourses = (dispatch) => {
   return async () => {
     const response = await courseApi.get('/coursetest/');
-    dispatch({type: 'fetch_courses', payload: response.data});
+    dispatch({
+      type: 'fetch_courses',
+      payload: response.data.sort((a, b) => a.name > b.name),
+    });
   };
 };
 
