@@ -4,7 +4,6 @@ import {GlobalColors} from './Global';
 export const ProfileScreenStyles = StyleSheet.create({
   contentView: {
     flex: 1,
-    // padding: 5,
   },
   row: {
     flexDirection: 'row',
