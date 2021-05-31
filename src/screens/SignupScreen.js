@@ -1,9 +1,10 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 import {NavigationEvents} from 'react-navigation';
 import {useAuthContext} from '../context/AuthContext';
 import AuthForm from '../components/AuthForm';
 import NavLink from '../components/NavLink';
+import {SignupScreenStyles as styles} from '../styles/Signup';
 
 const SignupScreen = ({navigation}) => {
   const {state, signup, clearErrorMessage} = useAuthContext();
@@ -33,13 +34,5 @@ SignupScreen.navigationOptions = () => {
     header: () => false,
   };
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    marginBottom: 200,
-  },
-});
 
 export default SignupScreen;
