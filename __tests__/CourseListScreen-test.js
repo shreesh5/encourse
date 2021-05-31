@@ -67,7 +67,7 @@ describe('<CourseListScreen />', () => {
 
     expect(navigation.navigate).toHaveBeenCalledTimes(1);
     expect(navigation.navigate).toHaveBeenCalledWith('CourseDetail', {
-      id: courses[0].id,
+      course: courses[0],
     });
   });
 });

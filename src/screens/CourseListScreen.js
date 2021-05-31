@@ -1,5 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, FlatList, TouchableOpacity, ActivityIndicator} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import {CourseListScreenStyles as styles} from '../styles/Course';
 import {useCourseContext} from '../context/CourseContext';
 
@@ -21,6 +27,7 @@ const CourseListScreen = ({navigation}) => {
     return () => {
       listener.remove();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderItem = ({item}) => {
@@ -31,8 +38,7 @@ const CourseListScreen = ({navigation}) => {
             course: item,
           });
         }}
-        testID={`button-${item.id}`}
-      >
+        testID={`button-${item.id}`}>
         <View style={styles.courseCard}>
           <Text style={styles.courseText}>{item.name}</Text>
         </View>
