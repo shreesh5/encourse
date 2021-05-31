@@ -21,6 +21,7 @@ const ProfileScreen = ({navigation}) => {
     if (loading && authState.user) {
       setLoading(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authState.user]);
 
   const myProfile = () => {
