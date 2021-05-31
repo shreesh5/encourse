@@ -46,6 +46,7 @@ const CourseListScreen = ({navigation}) => {
     return () => {
       listener.remove();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderItem = ({item}) => {
@@ -56,8 +57,7 @@ const CourseListScreen = ({navigation}) => {
           <TouchableOpacity
             onPress={() =>
               navigation.navigate('UserDetail', {user: item, id: item.id})
-            }
-          >
+            }>
             <Icon name="edit-2" size={20} style={styles.userOptionEdit} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => deleteUser(item.id)}>
