@@ -3,7 +3,7 @@ import {View, Text, ActivityIndicator} from 'react-native';
 import {Context as AuthContext} from '../context/AuthContext';
 import {useCourseContext} from '../context/CourseContext';
 import {useAuthContext} from '../context/AuthContext';
-import {CourseDetailStyles as styles} from '../styles/CourseDetail';
+import {CourseStyles as styles} from '../styles/Course';
 import courseApi from '../api/course';
 import Button from '../components/Button';
 

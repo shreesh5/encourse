@@ -3,12 +3,10 @@ import {GlobalColors} from './Global';
 
 const {width} = Dimensions.get('window');
 
-export const CourseDetailStyles = StyleSheet.create({
+export const CourseStyles = StyleSheet.create({
   contentView: {
     flex: 1,
     padding: 5,
-    // justifyContent: 'center',
-    // alignItems: 'center',
   },
   courseName: {
     fontSize: 27,
@@ -24,14 +22,10 @@ export const CourseDetailStyles = StyleSheet.create({
   courseDurationContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    // borderWidth: 1,
-    // borderColor: GlobalColors.black,
     padding: 5,
   },
   courseDescriptionContainer: {
     flexDirection: 'column',
-    // borderWidth: 1,
-    // borderColor: GlobalColors.black,
     padding: 5,
   },
   adminButton: {
@@ -66,11 +60,37 @@ export const CourseDetailStyles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    // alignSelf: 'flex-',
   },
   allButtonContainer: {
     flex: 1,
     justifyContent: 'flex-end',
     marginBottom: 23,
+  },
+});
+
+export const CourseListScreenStyles = StyleSheet.create({
+  contentView: {
+    flex: 1,
+    padding: 5,
+  },
+  courseListContainer: {
+    alignItems: 'center',
+    flexGrow: 1,
+    marginTop: 15,
+  },
+  courseCard: {
+    width: width * 0.7,
+    borderWidth: 1,
+    borderColor: GlobalColors.purple,
+    padding: 20,
+    margin: 10,
+    borderRadius: 15,
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: GlobalColors.purple,
+  },
+  courseText: {
+    color: GlobalColors.white,
+    fontSize: 23,
   },
 });

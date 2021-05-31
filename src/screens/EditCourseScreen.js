@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {View, ActivityIndicator} from 'react-native';
 import {useCourseContext} from '../context/CourseContext';
-import {CourseDetailStyles as styles} from '../styles/CourseDetail';
+import {CourseDetailStyles as styles} from '../styles/Course';
 import CourseForm from '../components/CourseForm';
 
 const EditCourseScreen = ({navigation}) => {

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList, TouchableOpacity, ActivityIndicator} from 'react-native';
-import {CourseListScreenStyles as styles} from '../styles/CourseList';
+import {CourseListScreenStyles as styles} from '../styles/Course';
 import {useCourseContext} from '../context/CourseContext';
 
 const CourseListScreen = ({navigation}) => {
