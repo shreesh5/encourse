@@ -15,6 +15,7 @@ const CourseForm = ({
   const [duration, setDuration] = useState(initialValues.duration);
   const [description, setDescription] = useState(initialValues.description);
   const [capacity, setCapacity] = useState(initialValues.capacity);
+  // eslint-disable-next-line no-unused-vars
   const [users, setUsers] = useState(initialValues.users);
 
   return (
@@ -70,7 +71,9 @@ const CourseForm = ({
           placeholder="5"
         />
       </View>
-      {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
+      {errorMessage ? (
+        <Text style={styles.errorMessage}>{errorMessage}</Text>
+      ) : null}
       <Spacer>
         <TouchableOpacity
           onPress={() => {
@@ -87,8 +90,7 @@ const CourseForm = ({
               onSubmit(name, duration, description, capacity);
             }
           }}
-          testID={buttonTestID}
-        >
+          testID={buttonTestID}>
           <View style={styles.submitButtonContainer}>
             <Text style={styles.submitButtonText}>{submitButtonText}</Text>
           </View>

@@ -60,12 +60,13 @@ const AuthForm = ({
           placeholder="Password"
         />
       </View>
-      {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
+      {errorMessage ? (
+        <Text style={styles.errorMessage}>{errorMessage}</Text>
+      ) : null}
       <Spacer>
         <TouchableOpacity
           onPress={() => onSubmit({username, email, password})}
-          testID={buttonTestID}
-        >
+          testID={buttonTestID}>
           <View style={styles.submitButtonContainer}>
             <Text style={styles.submitButtonText}>{submitButtonText}</Text>
           </View>

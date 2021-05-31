@@ -78,8 +78,7 @@ const UserForm = ({user, onSubmit, buttonTestID}) => {
               country,
             })
           }
-          testID={buttonTestID}
-        >
+          testID={buttonTestID}>
           <View style={styles.submitButtonContainer}>
             <Text style={styles.submitButtonText}>Save</Text>
           </View>
