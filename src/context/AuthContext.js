@@ -139,6 +139,7 @@ const getUserDetails = (dispatch) => {
 const updateUserDetails = (dispatch) => {
   return async ({id, email, username, password, school, city, country}) => {
     try {
+      // eslint-disable-next-line no-unused-vars
       const response = await courseApi.put(`/usertest/${id}/`, {
         id,
         email,
