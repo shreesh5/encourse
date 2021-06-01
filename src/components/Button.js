@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 
+// Custom component for a button.
 const Button = ({label, onPress, labelStyle, containerStyle, testID}) => {
   return (
     <TouchableOpacity onPress={() => onPress()} testID={testID}>

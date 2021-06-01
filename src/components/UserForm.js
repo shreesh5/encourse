@@ -3,6 +3,9 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import Spacer from './Spacer';
 import {AuthFormStyles as styles} from '../styles/AuthForm';
 
+// Custom component for user form. Handles
+// editing user profile for students and
+// editing different user profiles for admins.
 const UserForm = ({user, onSubmit, buttonTestID}) => {
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);

@@ -3,6 +3,8 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import Spacer from './Spacer';
 import {AuthFormStyles as styles} from '../styles/AuthForm';
 
+// Custom component for user authentication form.
+// Used for both signing in and signing up.
 const AuthForm = ({
   headerText,
   errorMessage,

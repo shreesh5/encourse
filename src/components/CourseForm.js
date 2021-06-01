@@ -3,6 +3,9 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import Spacer from './Spacer';
 import {AuthFormStyles as styles} from '../styles/AuthForm';
 
+// Custom component for course form.
+// Handles creating a new course as
+// well as editing as exisiting course.
 const CourseForm = ({
   headerText,
   errorMessage,
