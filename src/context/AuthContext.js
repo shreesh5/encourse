@@ -29,6 +29,10 @@ const authReducer = (state, action) => {
   }
 };
 
+// Action to try local signin. Checks whether
+// information is stored in Async Storage, if
+// present, logs user in else, redirects user
+// to login page.
 const tryLocalSignin = (dispatch) => async () => {
   const token = await AsyncStorage.getItem('token');
   const role = await AsyncStorage.getItem('role');
@@ -41,15 +45,17 @@ const tryLocalSignin = (dispatch) => async () => {
   }
 };
 
+// Action to clear error message.
 const clearErrorMessage = (dispatch) => () => {
   dispatch({type: 'clear_error_message'});
 };
 
+// Action to sign user up. Make API request to sign up
+// with email, username, and password. If successful,
+// state is modified to indicate authentication, if
+// unsuccessful, then an error message is displayed.
 const signup = (dispatch) => {
   return async ({username, email, password}) => {
-    // make api request to sign up with that username and password
-    // if we sign up, modify our state, and say that we are authenticated
-    // if signing up fails, we probably need to reflect an error message somewhere
     try {
       const response = await courseApi.post('/auth/register/', {
         username,
@@ -79,6 +85,9 @@ const signup = (dispatch) => {
   };
 };
 
+// Action to sign user in. Makes API request to signin.
+// If successful, state is updated to indicate authentication,
+// if unsuccessful, then an error message is displayed.
 const signin = (dispatch) => {
   return async ({username, password}) => {
     // try to signin
@@ -111,6 +120,8 @@ const signin = (dispatch) => {
   };
 };
 
+// Action to signout. Redirects user to loginFlow
+// and removes user information from Async Storage.
 const signout = (dispatch) => {
   return async () => {
     await AsyncStorage.removeItem('token');
@@ -121,6 +132,7 @@ const signout = (dispatch) => {
   };
 };
 
+// Action to retrieve user details.
 const getUserDetails = (dispatch) => {
   return async (userPK) => {
     try {
@@ -136,6 +148,7 @@ const getUserDetails = (dispatch) => {
   };
 };
 
+// Action to update user details.
 const updateUserDetails = (dispatch) => {
   return async ({id, email, username, password, school, city, country}) => {
     try {
@@ -171,6 +184,7 @@ const updateUserDetails = (dispatch) => {
   };
 };
 
+// Using helper function to create Context and Provider.
 export const {Context, Provider} = createDataContext(
   authReducer,
   {

@@ -34,6 +34,7 @@ const courseReducer = (state, action) => {
   }
 };
 
+// Action to fetch list of all courses.
 const fetchCourses = (dispatch) => {
   return async () => {
     const response = await courseApi.get('/coursetest/');
@@ -44,6 +45,7 @@ const fetchCourses = (dispatch) => {
   };
 };
 
+// Action to create a new course.
 const createCourse = (dispatch) => {
   return async (name, duration, description, capacity) => {
     try {
@@ -63,6 +65,7 @@ const createCourse = (dispatch) => {
   };
 };
 
+// Action to delete an exisiting course.
 const deleteCourse = (dispatch) => {
   return async (courseId) => {
     try {
@@ -80,6 +83,7 @@ const deleteCourse = (dispatch) => {
   };
 };
 
+// Action to update details of exisiting course.
 const updateCourse = (dispatch) => {
   return async (id, name, duration, description, capacity, callback) => {
     try {
@@ -109,6 +113,7 @@ const updateCourse = (dispatch) => {
   };
 };
 
+// Using helper function to create Context and Provider.
 export const {Context, Provider} = createDataContext(
   courseReducer,
   {fetchCourses, createCourse, deleteCourse, updateCourse},
