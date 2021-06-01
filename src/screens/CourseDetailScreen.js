@@ -3,8 +3,8 @@ import {View, Text} from 'react-native';
 import {useCourseContext} from '../context/CourseContext';
 import {useAuthContext} from '../context/AuthContext';
 import {CourseStyles as styles} from '../styles/Course';
-import courseApi from '../api/course';
 import Button from '../components/Button';
+import {enrollInCourse, dropCourse} from '../services/enrollment';
 
 // Screen for displaying course details.
 // Fetches course from navigation param
@@ -15,32 +15,6 @@ const CourseDetailScreen = ({navigation}) => {
   const [course, setCourse] = useState(navigation.getParam('course'));
   const {deleteCourse} = useCourseContext();
   const {state: authState} = useAuthContext();
-
-  const enrollInCourse = async (userId, courseId) => {
-    try {
-      const response = await courseApi.post(
-        `/enrollment/${userId}/${courseId}/`,
-        {
-          user: userId,
-          course: courseId,
-        },
-      );
-      console.log('response', response);
-    } catch (error) {
-      console.log('error in course enrollment', error);
-    }
-  };
-
-  const unEnrollInCourse = async (userId, courseId) => {
-    try {
-      const response = await courseApi.delete(
-        `/enrollment/${userId}/${courseId}/`,
-      );
-      console.log('response', response);
-    } catch (error) {
-      console.log('error in course enrollment', error);
-    }
-  };
 
   return (
     <View style={styles.contentView}>
@@ -72,7 +46,7 @@ const CourseDetailScreen = ({navigation}) => {
           ) : (
             <Button
               label="Drop"
-              onPress={() => unEnrollInCourse(authState.pk, course.id)}
+              onPress={() => dropCourse(authState.pk, course.id)}
               labelStyle={styles.buttonText}
               containerStyle={styles.enrollButton}
               testID="drop-button"
