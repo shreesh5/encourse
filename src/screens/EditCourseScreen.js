@@ -4,6 +4,7 @@ import {useCourseContext} from '../context/CourseContext';
 import {CourseStyles as styles} from '../styles/Course';
 import CourseForm from '../components/CourseForm';
 
+// Screen for editing an existing course.
 const EditCourseScreen = ({navigation}) => {
   // eslint-disable-next-line no-unused-vars
   const [course, setCourse] = useState(navigation.getParam('course'));

@@ -9,6 +9,7 @@ import {
 import {CourseListScreenStyles as styles} from '../styles/Course';
 import {useCourseContext} from '../context/CourseContext';
 
+// Screen for displaying available courses.
 const CourseListScreen = ({navigation}) => {
   const [loading, setLoading] = useState(false);
   const {state, fetchCourses} = useCourseContext();
