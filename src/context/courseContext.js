@@ -118,4 +118,7 @@ export const {Context, Provider} = createDataContext(
   },
 );
 
+// Helper function for accessing AuthContext
+// state and actions. Mainly used for testing
+// context.
 export const useCourseContext = () => useContext(Context);

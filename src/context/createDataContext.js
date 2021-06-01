@@ -1,5 +1,6 @@
 import React, {useReducer} from 'react';
 
+// Helper function for creating different types of context.
 export default (reducer, actions, initialState) => {
   const Context = React.createContext();
 

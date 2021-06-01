@@ -185,4 +185,7 @@ export const {Context, Provider} = createDataContext(
   {token: null, errorMessage: '', role: '', pk: null, user: null},
 );
 
+// Helper function for accessing CourseContext
+// state and actions. Mainly used for testing
+// context.
 export const useAuthContext = () => useContext(Context);
