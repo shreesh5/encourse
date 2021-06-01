@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import CourseForm from '../components/CourseForm';
 import {useCourseContext} from '../context/CourseContext';
 
+// Screen for adding a new course.
 const AddCourseScreen = () => {
   const {state, createCourse} = useCourseContext();
 

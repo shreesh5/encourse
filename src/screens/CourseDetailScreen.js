@@ -6,6 +6,11 @@ import {CourseStyles as styles} from '../styles/Course';
 import courseApi from '../api/course';
 import Button from '../components/Button';
 
+// Screen for displaying course details.
+// Fetches course from navigation param
+// and provides student user option to
+// enroll/drop and provides admin user
+// options to edit/delete course.
 const CourseDetailScreen = ({navigation}) => {
   const [course, setCourse] = useState(navigation.getParam('course'));
   const {deleteCourse} = useCourseContext();
