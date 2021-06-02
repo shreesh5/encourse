@@ -94,11 +94,13 @@ What was deliberately not built:
 - Load test script for 100 concurrent requests
 
 ## Context on decisions and framework choices
+For this project, I decided to design a mobile application architecture with two Stack Navigators inside a Tab Navigator. I used this architecture because I thought it would be a nice way to show the user two main options with further navigation possible for each of the main two options. For the backend, I decided to use Django Viewsets as they provide a way to incorporate all of the CRUD operations into one single entity while also allowing for different permissions for each of the operations. I was experiment with different ways on how to incorporate the CRUD operations into the admin panel as well as the mobile application and Viewsets seemed like the optimal way to provide this functionality. I used React-Native for the frontend as I am quite familiar with it and Django for the backend because it took care of most of the features required for the admin panel. 
 
 ## Areas for improvements
 - One of the main areas of improvement is the testing of the app. I used Jest and @testing-library/react-native to write the tests for each of the components and the screens. I am fairly new to using @testing-library/react-native so I spent a lot of time researching and looking at the documentation in order to write the tests. I do understand that the tests that I wrote do not cover the entire app and hence this is definitely an area of improvement.
 - A second area of improvement is the enrollment features provided by the app. Currently the app only allows for students to enroll in and drop courses but it doesn't show the user which courses they are enrolled in. If I had more time, I would have liked to include this feature as well.
 - Another area of improvement is including accessibility features. I recognize the importance of accessibility as it allows for more inclusivity and demonstrates to users that they can still use the app regardless of any disability that they might have.
+- Another area of improvement is the updating of the user profile is the admin decides to edit their own profile when clicking on their profile in the list of user profiles shown.
 
 ## Contact
 
