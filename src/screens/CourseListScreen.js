@@ -31,6 +31,14 @@ const CourseListScreen = ({navigation}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const renderListEmptyComponent = () => {
+    return (
+      <View>
+        <Text>No courses present.</Text>
+      </View>
+    );
+  };
+
   const renderItem = ({item}) => {
     return (
       <TouchableOpacity
@@ -63,6 +71,7 @@ const CourseListScreen = ({navigation}) => {
             fetchCourses();
             setLoading(false);
           }}
+          ListEmptyComponent={renderListEmptyComponent}
         />
       )}
     </View>
