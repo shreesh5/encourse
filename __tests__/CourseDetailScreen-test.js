@@ -36,7 +36,7 @@ describe('<CourseDetailScreen />', () => {
   ];
   // Mocking navigation.getParam() to return
   // first course by default
-  const mockNavigationGetParam = jest.fn().mockImplementation((param) => { 
+  const mockNavigationGetParam = jest.fn().mockImplementation((param) => {
     if (param === 'course') {
       return courses[0];
     }
@@ -91,7 +91,7 @@ describe('<CourseDetailScreen />', () => {
       .spyOn(CourseContext, 'useCourseContext')
       .mockImplementation(() => contextValues);
 
-    const {getByText, getByTestId, queryByTestId, toJSON} = await render(
+    const {getByText, getByTestId, queryByTestId} = await render(
       <CourseDetailScreen navigation={navigation} />,
     );
 

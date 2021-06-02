@@ -34,7 +34,7 @@ describe('<EditCourseScreen />', () => {
   const errorMessage = '';
   // Mocking navigation.getParam() to return
   // first course by default
-  const mockNavigationGetParam = jest.fn().mockImplementation((param) => { 
+  const mockNavigationGetParam = jest.fn().mockImplementation((param) => {
     if (param === 'course') {
       return courses[0];
     }

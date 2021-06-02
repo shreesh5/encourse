@@ -69,7 +69,9 @@ describe('<CourseForm />', () => {
     const durationLabel = getByText('Duration');
     const durationInput = getByDisplayValue('2 months');
     const descriptionLabel = getByText('Description');
-    const descriptionInput = getByDisplayValue('This is a test description for course CSE 101.');
+    const descriptionInput = getByDisplayValue(
+      'This is a test description for course CSE 101.',
+    );
     const capacityLabel = getByText('Capacity');
     const capacityInput = getByDisplayValue('5');
 
@@ -158,7 +160,9 @@ describe('<CourseForm />', () => {
 
     const nameInput = getByDisplayValue('CSE 101');
     const durationInput = getByDisplayValue('1 month');
-    const descriptionInput = getByDisplayValue('This is a test description for CSE 101.');
+    const descriptionInput = getByDisplayValue(
+      'This is a test description for CSE 101.',
+    );
     const capacityInput = getByDisplayValue('5');
     const addCourseButton = getByTestId(testID);
 
