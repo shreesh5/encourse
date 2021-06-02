@@ -78,6 +78,15 @@ iOS: react-native run-ios
 Android: react-native run-android
 ```
 
+## Summary of what was built and what was (deliberately) not
+
+## Context on decisions and framework choices
+
+## Areas for improvements
+- One of the main areas of improvement is the testing of the app. I used Jest and @testing-library/react-native to write the tests for each of the components and the screens. I am fairly new to using @testing-library/react-native so I spent a lot of time researching and looking at the documentation in order to write the tests. I do understand that the tests that I wrote do not cover the entire app and hence this is definitely an area of improvement.
+- A second area of improvement is the enrollment features provided by the app. Currently the app only allows for students to enroll in and drop courses but it doesn't show the user which courses they are enrolled in. If I had more time, I would have liked to include this feature as well.
+- Another area of improvement is including accessibility features. I recognize the importance of accessibility as it allows for more inclusivity and demonstrates to users that they can still use the app regardless of any disability that they might have.
+
 ## Contact
 
 If you want to contact me you can reach me at <shreeshnayak@address.com>.
