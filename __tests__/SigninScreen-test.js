@@ -5,6 +5,7 @@ import {render, fireEvent} from '@testing-library/react-native';
 import SigninScreen from '../src/screens/SigninScreen';
 import * as AuthContext from '../src/context/AuthContext';
 
+// Mocking react-navigation
 jest.mock('react-navigation', () => ({
   withNavigation: (Component) => (props) =>
     <Component navigation={{navigate: jest.fn()}} {...props} />,
@@ -13,6 +14,7 @@ jest.mock('react-navigation', () => ({
 }));
 
 describe('<SigninScreen />', () => {
+  // Dummy context values for student user
   const studentContextValues = {
     state: {
       errorMessage: '',
@@ -21,6 +23,7 @@ describe('<SigninScreen />', () => {
     clearErrorMessage: jest.fn(),
   };
 
+  // Testing onPress functionality for signing in
   it('Handles onPress for signin', async () => {
     jest
       .spyOn(AuthContext, 'useAuthContext')
