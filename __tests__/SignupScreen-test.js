@@ -24,6 +24,9 @@ describe('<SigninScreen />', () => {
   };
 
   it('Handles onPress for signup', async () => {
+    // Spying of useAuthContext to
+    // mock context with dummy context
+    // values
     jest
       .spyOn(AuthContext, 'useAuthContext')
       .mockImplementation(() => studentContextValues);
