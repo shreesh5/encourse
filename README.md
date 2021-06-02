@@ -8,7 +8,7 @@ Before you begin, ensure you have met the following requirements:
 * You have installed `PostgreSQL 13.3`
 * You have installed `Python 3.9.5`
 
-## Installing <project_name>
+## Installing encourse & encourse-backend
 
 To install encourse & encourse-backend, follow these steps:
 
@@ -80,9 +80,8 @@ Android: react-native run-android
 
 ## Contact
 
-If you want to contact me you can reach me at shreeshnayak@address.com.
+If you want to contact me you can reach me at <shreeshnayak@address.com>.
 
 ## License
-<!--- If you're not sure which open license to use see https://choosealicense.com/--->
 
-This project uses the following license: [<license_name>](<link>).
+This project uses the following license: [MIT](https://opensource.org/licenses/MIT).
