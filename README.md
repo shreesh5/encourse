@@ -79,6 +79,19 @@ Android: react-native run-android
 ```
 
 ## Summary of what was built and what was (deliberately) not
+For this take home assignment, I designed a mobile application in React Native that connects to a Django backend which is tied to a PostgreSQL database. The mobile application is designed for users to enroll in and drop courses. Student users can only enroll in/drop courses and edit their user profile whereas admin users can create/edit/delete courses as well as view/edit/delete users present in the system.
+
+What was built:
+- CRUD operations for courses in admin panel and mobile application
+- User management in admin panel and mobile application
+- Export/Import of data in admin panel
+- Distinction between admin user from student user while logging in to mobile application
+- Filters for list of users (school, city, country)
+
+What was deliberately not built:
+- End to End tests
+- Auto deployment scripts
+- Load test script for 100 concurrent requests
 
 ## Context on decisions and framework choices
 
