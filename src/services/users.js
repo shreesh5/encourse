@@ -3,7 +3,7 @@ import {navigate} from '../navigationRef';
 
 export const fetchUsers = async () => {
   try {
-    const response = await courseApi.get('/usertest/');
+    const response = await courseApi.get('/user/');
     console.log('response', response.data);
     return response.data;
   } catch (error) {
@@ -13,7 +13,7 @@ export const fetchUsers = async () => {
 
 export const deleteUser = async (id) => {
   try {
-    const response = await courseApi.delete(`/usertest/${id}/`);
+    const response = await courseApi.delete(`/user/${id}/`);
     console.log('response', response);
   } catch (error) {
     console.log('error in deleting user', error);
@@ -30,7 +30,7 @@ export const updateUser = async ({
   country,
 }) => {
   try {
-    const response = await courseApi.put(`/usertest/${id}/`, {
+    const response = await courseApi.put(`/user/${id}/`, {
       id,
       email,
       username,

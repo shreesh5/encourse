@@ -37,7 +37,7 @@ const courseReducer = (state, action) => {
 // Action to fetch list of all courses.
 const fetchCourses = (dispatch) => {
   return async () => {
-    const response = await courseApi.get('/coursetest/');
+    const response = await courseApi.get('/course/');
     dispatch({
       type: 'fetch_courses',
       payload: response.data.sort((a, b) => a.name > b.name),
@@ -49,7 +49,7 @@ const fetchCourses = (dispatch) => {
 const createCourse = (dispatch) => {
   return async (name, duration, description, capacity) => {
     try {
-      await courseApi.post('/coursetest/', {
+      await courseApi.post('/course/', {
         name,
         duration,
         description,
@@ -69,7 +69,7 @@ const createCourse = (dispatch) => {
 const deleteCourse = (dispatch) => {
   return async (courseId) => {
     try {
-      const response = await courseApi.delete(`/coursetest/${courseId}/`);
+      const response = await courseApi.delete(`/course/${courseId}/`);
       console.log('response', response);
       dispatch({type: 'delete_course', payload: courseId});
       navigate('CourseList');
@@ -88,7 +88,7 @@ const updateCourse = (dispatch) => {
   return async (id, name, duration, description, capacity, callback) => {
     try {
       // eslint-disable-next-line no-unused-vars
-      const response = await courseApi.put(`/coursetest/${id}/`, {
+      const response = await courseApi.put(`/course/${id}/`, {
         id,
         name,
         duration,

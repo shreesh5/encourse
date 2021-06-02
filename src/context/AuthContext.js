@@ -136,7 +136,7 @@ const signout = (dispatch) => {
 const getUserDetails = (dispatch) => {
   return async (userPK) => {
     try {
-      const response = await courseApi.get('/usertest/' + userPK + '/');
+      const response = await courseApi.get('/user/' + userPK + '/');
       console.log('response for get user details', response.data);
       dispatch({type: 'save_details', payload: response.data});
     } catch (error) {
@@ -153,7 +153,7 @@ const updateUserDetails = (dispatch) => {
   return async ({id, email, username, password, school, city, country}) => {
     try {
       // eslint-disable-next-line no-unused-vars
-      const response = await courseApi.put(`/usertest/${id}/`, {
+      const response = await courseApi.put(`/user/${id}/`, {
         id,
         email,
         username,
