@@ -7,6 +7,7 @@ import * as CourseContext from '../src/context/CourseContext';
 import * as AuthContext from '../src/context/AuthContext';
 
 describe('<CourseDetailScreen />', () => {
+  // Dummy test values for courses
   const courses = [
     {
       id: 1,
@@ -33,16 +34,20 @@ describe('<CourseDetailScreen />', () => {
       users: [],
     },
   ];
+  // Mocking navigation.getParam() to return
+  // first course by default
   const mockNavigationGetParam = jest.fn().mockImplementation((param) => { 
     if (param === 'course') {
       return courses[0];
     }
   });
+  // Dummy navigation object for testing
   const navigation = {
     navigate: jest.fn(),
     getParam: mockNavigationGetParam,
     pop: jest.fn(),
   };
+  // Dummy context values for courses
   const contextValues = {
     state: {courses, deleteCourse: jest.fn()},
     updateCourse: jest.fn(),

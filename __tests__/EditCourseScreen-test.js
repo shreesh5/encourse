@@ -6,6 +6,7 @@ import EditCourseScreen from '../src/screens/EditCourseScreen';
 import * as CourseContext from '../src/context/CourseContext';
 
 describe('<EditCourseScreen />', () => {
+  // Dummy test values for courses
   const courses = [
     {
       id: 1,
@@ -29,12 +30,16 @@ describe('<EditCourseScreen />', () => {
       capacity: 5,
     },
   ];
+  // Dummy test value for errorMessage
   const errorMessage = '';
+  // Mocking navigation.getParam() to return
+  // first course by default
   const mockNavigationGetParam = jest.fn().mockImplementation((param) => { 
     if (param === 'course') {
       return courses[0];
     }
   });
+  // Dummy navigation object for testing
   const navigation = {
     navigate: jest.fn(),
     getParam: mockNavigationGetParam,

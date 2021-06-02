@@ -6,6 +6,7 @@ import EditProfileScreen from '../src/screens/EditProfileScreen';
 import * as AuthContext from '../src/context/AuthContext';
 
 describe('<EditProfileScreen />', () => {
+  // Dummy context values for student user
   const studentContextValues = {
     state: {
       role: 'student',

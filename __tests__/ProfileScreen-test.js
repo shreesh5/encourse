@@ -6,10 +6,12 @@ import ProfileScreen from '../src/screens/ProfileScreen';
 import * as AuthContext from '../src/context/AuthContext';
 
 describe('<ProfileScreen />', () => {
+  // Dummy navigation object for testing
   const navigation = {
     navigate: jest.fn(),
     pop: jest.fn(),
   };
+  // Dummy context values for admin user
   const adminContextValues = {
     state: {
       role: 'superuser',
@@ -25,6 +27,7 @@ describe('<ProfileScreen />', () => {
     getUserDetails: jest.fn(),
     signout: jest.fn(),
   };
+  // Dummy context values for student user
   const studentContextValues = {
     state: {
       role: 'student',

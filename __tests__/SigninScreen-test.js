@@ -23,7 +23,6 @@ describe('<SigninScreen />', () => {
     clearErrorMessage: jest.fn(),
   };
 
-  // Testing onPress functionality for signing in
   it('Handles onPress for signin', async () => {
     jest
       .spyOn(AuthContext, 'useAuthContext')

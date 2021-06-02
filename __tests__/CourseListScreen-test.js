@@ -6,6 +6,7 @@ import CourseListScreen from '../src/screens/CourseListScreen';
 import * as CourseContext from '../src/context/CourseContext';
 
 describe('<CourseListScreen />', () => {
+  // Dummy navigation object for testing
   const navigation = {
     navigate: jest.fn(),
     addListener: jest.fn(() => ({
@@ -13,6 +14,7 @@ describe('<CourseListScreen />', () => {
     })),
   };
 
+  // Dummy test values for courses
   const courses = [
     {
       id: 1,
