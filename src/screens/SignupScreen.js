@@ -6,6 +6,7 @@ import AuthForm from '../components/AuthForm';
 import NavLink from '../components/NavLink';
 import {SignupScreenStyles as styles} from '../styles/Signup';
 
+// Screen for signing up.
 const SignupScreen = ({navigation}) => {
   const {state, signup, clearErrorMessage} = useAuthContext();
 

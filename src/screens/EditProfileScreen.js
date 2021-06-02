@@ -4,6 +4,7 @@ import {useAuthContext} from '../context/AuthContext';
 import {UserDetailStyles as styles} from '../styles/UserDetail';
 import UserForm from '../components/UserForm';
 
+// Screen for editing user profile.
 const EditProfileScreen = () => {
   const {state, updateUserDetails} = useAuthContext();
 

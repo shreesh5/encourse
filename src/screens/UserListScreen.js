@@ -10,6 +10,8 @@ import {UserListScreenStyles as styles} from '../styles/UserList';
 import Icon from 'react-native-vector-icons/Feather';
 import {fetchUsers, deleteUser} from '../services/users';
 
+// Screen for displaying list of users
+// to the admin.
 const CourseListScreen = ({navigation}) => {
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);

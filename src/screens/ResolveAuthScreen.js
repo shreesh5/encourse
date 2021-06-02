@@ -2,6 +2,8 @@
 import React, {useEffect} from 'react';
 import {useAuthContext} from '../context/AuthContext';
 
+// Screen for resolving authentication
+// by trying to sign in locally.
 const ResolveAuthScreen = () => {
   const {tryLocalSignin} = useAuthContext();
 

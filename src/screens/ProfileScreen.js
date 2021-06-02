@@ -10,6 +10,11 @@ import {useAuthContext} from '../context/AuthContext';
 import Icon from 'react-native-vector-icons/Feather';
 import {ProfileScreenStyles as styles} from '../styles/Profile';
 
+// Screen for displaying user profile
+// and options for edit profile for
+// student users. Displays options
+// for admin users to create a new course
+// and to view/edit/delete users.
 const ProfileScreen = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const {state: authState, signout, getUserDetails} = useAuthContext();
